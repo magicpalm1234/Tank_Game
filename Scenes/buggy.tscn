@@ -1,0 +1,66 @@
+[gd_scene load_steps=9 format=3 uid="uid://udrltsm15gwx"]
+
+[ext_resource type="Texture2D" uid="uid://42llyxtxskbl" path="res://Assets/Tank.png" id="1_efscn"]
+[ext_resource type="PackedScene" uid="uid://ctuua0yuhxs28" path="res://Scenes/explotion.tscn" id="2_vrue0"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_vrue0"]
+atlas = ExtResource("1_efscn")
+region = Rect2(0, 19, 51, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_07ppb"]
+atlas = ExtResource("1_efscn")
+region = Rect2(59, 19, 51, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xk6u"]
+atlas = ExtResource("1_efscn")
+region = Rect2(0, 19, 55, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_sl7a6"]
+atlas = ExtResource("1_efscn")
+region = Rect2(0, 0, 55, 19)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_lq4iq"]
+animations = [{
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_vrue0")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_07ppb")
+}],
+"loop": true,
+"name": &"Driving",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_7xk6u")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sl7a6")
+}],
+"loop": true,
+"name": &"Shooting",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7xk6u"]
+radius = 7.9999995
+height = 24.0
+
+[node name="Buggy" type="CharacterBody2D"]
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+sprite_frames = SubResource("SpriteFrames_lq4iq")
+animation = &"Driving"
+frame_progress = 0.7072829
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
+position = Vector2(-8, 0)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_7xk6u")
+
+[node name="Explotion" parent="." instance=ExtResource("2_vrue0")]
+position = Vector2(38, 2)
+frame_progress = 0.9202794
