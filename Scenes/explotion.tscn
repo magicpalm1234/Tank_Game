@@ -32,7 +32,7 @@ animations = [{
 "duration": 0.5,
 "texture": SubResource("AtlasTexture_jgbwx")
 }, {
-"duration": 1.5,
+"duration": 1.0,
 "texture": SubResource("AtlasTexture_34l55")
 }, {
 "duration": 0.5,
@@ -55,4 +55,4 @@ animations = [{
 [node name="Explotion" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_tstu4")
 autoplay = "default"
-frame_progress = 0.03779591
+frame_progress = 0.8979801

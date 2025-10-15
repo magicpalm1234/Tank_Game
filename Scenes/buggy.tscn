@@ -1,7 +1,43 @@
-[gd_scene load_steps=9 format=3 uid="uid://udrltsm15gwx"]
+[gd_scene load_steps=15 format=3 uid="uid://udrltsm15gwx"]
 
+[ext_resource type="Texture2D" uid="uid://dc67khtv8q6ta" path="res://Assets/TankBarrel.png" id="1_07ppb"]
+[ext_resource type="Script" uid="uid://t3254pk6gggf" path="res://Scripts/buggy.gd" id="1_7xk6u"]
 [ext_resource type="Texture2D" uid="uid://42llyxtxskbl" path="res://Assets/Tank.png" id="1_efscn"]
-[ext_resource type="PackedScene" uid="uid://ctuua0yuhxs28" path="res://Scenes/explotion.tscn" id="2_vrue0"]
+[ext_resource type="PackedScene" uid="uid://cnpcn7l25ujmi" path="res://Scenes/bullet.tscn" id="4_7xk6u"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_5x8jh"]
+atlas = ExtResource("1_07ppb")
+region = Rect2(0, 0, 22, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_kf3cu"]
+atlas = ExtResource("1_07ppb")
+region = Rect2(24, 0, 24, 6)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_pwqbi"]
+atlas = ExtResource("1_07ppb")
+region = Rect2(0, 0, 24, 6)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_42al0"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_5x8jh")
+}],
+"loop": true,
+"name": &"Default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_kf3cu")
+}, {
+"duration": 0.1,
+"texture": SubResource("AtlasTexture_pwqbi")
+}],
+"loop": false,
+"name": &"Shoot",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_vrue0"]
 atlas = ExtResource("1_efscn")
@@ -11,13 +47,13 @@ region = Rect2(0, 19, 51, 19)
 atlas = ExtResource("1_efscn")
 region = Rect2(59, 19, 51, 19)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7xk6u"]
-atlas = ExtResource("1_efscn")
-region = Rect2(0, 19, 55, 19)
-
 [sub_resource type="AtlasTexture" id="AtlasTexture_sl7a6"]
 atlas = ExtResource("1_efscn")
 region = Rect2(0, 0, 55, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xk6u"]
+atlas = ExtResource("1_efscn")
+region = Rect2(0, 19, 55, 19)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lq4iq"]
 animations = [{
@@ -33,11 +69,11 @@ animations = [{
 "speed": 5.0
 }, {
 "frames": [{
-"duration": 3.0,
-"texture": SubResource("AtlasTexture_7xk6u")
-}, {
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_sl7a6")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_7xk6u")
 }],
 "loop": true,
 "name": &"Shooting",
@@ -45,22 +81,31 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_7xk6u"]
-radius = 7.9999995
-height = 24.0
+radius = 6.0
+height = 18.0
 
-[node name="Buggy" type="CharacterBody2D"]
+[node name="Buggy" type="CharacterBody2D" groups=["bullet"]]
+script = ExtResource("1_7xk6u")
+bullet_instance = ExtResource("4_7xk6u")
 
-[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
+[node name="TankBarrel" type="AnimatedSprite2D" parent="."]
+position = Vector2(9, -4)
+sprite_frames = SubResource("SpriteFrames_42al0")
+animation = &"Shoot"
+frame = 1
+frame_progress = 1.0
+offset = Vector2(12, 0)
+
+[node name="TankBody" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_lq4iq")
 animation = &"Driving"
-frame_progress = 0.7072829
+centered = false
+offset = Vector2(-22, -9)
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-visible = false
-position = Vector2(-8, 0)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_7xk6u")
 
-[node name="Explotion" parent="." instance=ExtResource("2_vrue0")]
-position = Vector2(38, 2)
-frame_progress = 0.9202794
+[node name="Camera2D" type="Camera2D" parent="."]
+position = Vector2(80, 0)
+zoom = Vector2(4, 4)

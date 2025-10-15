@@ -1,0 +1,57 @@
+[gd_scene load_steps=8 format=3 uid="uid://cnpcn7l25ujmi"]
+
+[ext_resource type="Script" uid="uid://c0h0s3y3x2nud" path="res://Scripts/bullet.gd" id="1_oduel"]
+[ext_resource type="Texture2D" uid="uid://budvkn4b48psv" path="res://Assets/Bullet.png" id="1_xjght"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ycag2"]
+size = Vector2(5, 2)
+
+[sub_resource type="Gradient" id="Gradient_oduel"]
+colors = PackedColorArray(0.46666667, 0, 0, 1, 1, 1, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_ycag2"]
+gradient = SubResource("Gradient_oduel")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_oduel"]
+resource_local_to_scene = true
+particle_flag_disable_z = true
+spread = 10.0
+initial_velocity_min = -95.95
+initial_velocity_max = -95.9
+gravity = Vector3(0, -20, 0)
+color_ramp = SubResource("GradientTexture1D_ycag2")
+collision_mode = 2
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_oduel"]
+size = Vector2(6.8125, 4)
+
+[node name="Bullet" type="CharacterBody2D"]
+script = ExtResource("1_oduel")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(2.5, 0)
+shape = SubResource("RectangleShape2D_ycag2")
+
+[node name="SmokeTrail" type="GPUParticles2D" parent="."]
+position = Vector2(2, 0)
+amount = 16
+lifetime = 0.2
+process_material = SubResource("ParticleProcessMaterial_oduel")
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+modulate = Color(0.39215687, 0.39215687, 0.39215687, 1)
+position = Vector2(0, -1)
+texture = ExtResource("1_xjght")
+centered = false
+
+[node name="Area2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D"]
+position = Vector2(2.59375, 0)
+shape = SubResource("RectangleShape2D_oduel")
+debug_color = Color(0.9794758, 0.14451978, 0, 0.41960785)
+
+[node name="VisibleOnScreenNotifier2D" type="VisibleOnScreenNotifier2D" parent="."]
+rect = Rect2(0, -1, 5, 2)
+
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
