@@ -9,15 +9,10 @@ class_name Tank
 var reloaded := true # has reloaded variable
 var max_elevation := -30.0 # max rotation for the barrel
 var min_elevation := 15.0 # min rotation for the barrel
+var health := 100.0
 
 func _ready() -> void:
-	#if bullet:
-		#bullet.hide()
-		#bullet.speed = 0
 	pass
-	
-
-
 
 func _physics_process(delta: float) -> void:
 	
@@ -46,16 +41,20 @@ func shoot(): # shoot code
 		
 		var new_bullet = bullet_instance.instantiate() # spawning the bullet
 		add_child(new_bullet)
-		new_bullet.add_to_group("bullet")
-	
-		if is_in_group("bullet"):
-			new_bullet.position = tank_barrel.position
-			new_bullet.show()
-			new_bullet.speed = 1000
-			new_bullet.rotation_degrees = tank_barrel.rotation_degrees
-	
+		
+		
+		new_bullet.position = tank_barrel.position
+		new_bullet.show()
+		new_bullet.speed = 1000
+		new_bullet.rotation_degrees = tank_barrel.rotation_degrees
+		
 		reloaded = false
 		reload()
+
+func take_damage(amount):
+	health -= amount
+	if health <= 0:
+		die()
 
 func camera_shake(): # shakes the camera in a randomly generated way
 	var tween = create_tween()

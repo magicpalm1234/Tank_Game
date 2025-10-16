@@ -59,3 +59,4 @@ debug_color = Color(0.9794758, 0.14451978, 0, 0.41960785)
 rect = Rect2(0, -1, 5, 2)
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

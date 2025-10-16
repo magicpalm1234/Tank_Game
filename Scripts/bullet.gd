@@ -6,10 +6,9 @@ class_name Bullet
 
 @export var explotion: PackedScene
 
-@onready var tank_barrel: AnimatedSprite2D = $"../TankBarrel"
 @export var tank: Tank
-var speed := 100.0
-var damage := 50
+@export var speed := 100.0
+@export var damage := 50
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -21,14 +20,16 @@ func _process(delta: float) -> void:
 	
 	var direction = Vector2.RIGHT.rotated(rotation)
 	
-	velocity = direction * speed
+	if get_parent().is_in_group("enemy"):
+		direction = Vector2.LEFT.rotated(rotation)
 	
+	velocity = direction * speed
 	
 	move_and_slide()
 
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
-	if body.is_in_group("enemy") and body.has_method("take_damage"):
+	if body.has_method("take_damage"):
 		body.take_damage(damage)
 		destroy()
 
@@ -41,4 +42,8 @@ func destroy():
 	add_child(new_explotion)
 	await new_explotion.animation_finished
 	
+	queue_free()
+
+
+func _on_visible_on_screen_notifier_2d_screen_exited() -> void:
 	queue_free()

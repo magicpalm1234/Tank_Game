@@ -3,9 +3,10 @@ extends Node2D
 class_name Enemy
 
 @export var explotions: PackedScene
+@export var bullet: PackedScene
 
 @export var health: float
-
+var reloaded := true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -13,13 +14,31 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	
+	await get_tree().create_timer(3.0).timeout
+	shoot()
 
+func reload(): # reload code
+	await get_tree().create_timer(3.0).timeout # reload time of three seconds
+	reloaded = true
 
 func take_damage(amount):
 	health -= amount
 	if health <= 0:
 		die()
+
+
+func shoot():
+	if reloaded == true:
+		$AnimatedSprite2D.play("Shooting")
+		var new_bullet = bullet.instantiate()
+		add_child(new_bullet)
+		new_bullet.rotation_degrees = 180
+		new_bullet.speed = -1000
+		new_bullet.position = Vector2(-15,-5)
+		
+		reloaded = false
+		reload()
 
 
 func die():
