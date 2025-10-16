@@ -1,7 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cnpcn7l25ujmi"]
+[gd_scene load_steps=9 format=3 uid="uid://cnpcn7l25ujmi"]
 
 [ext_resource type="Script" uid="uid://c0h0s3y3x2nud" path="res://Scripts/bullet.gd" id="1_oduel"]
 [ext_resource type="Texture2D" uid="uid://budvkn4b48psv" path="res://Assets/Bullet.png" id="1_xjght"]
+[ext_resource type="PackedScene" uid="uid://ctuua0yuhxs28" path="res://Scenes/explotion.tscn" id="2_ycag2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ycag2"]
 size = Vector2(5, 2)
@@ -19,6 +20,8 @@ spread = 10.0
 initial_velocity_min = -95.95
 initial_velocity_max = -95.9
 gravity = Vector3(0, -20, 0)
+scale_min = 0.79999995
+scale_max = 1.1999999
 color_ramp = SubResource("GradientTexture1D_ycag2")
 collision_mode = 2
 
@@ -27,6 +30,7 @@ size = Vector2(6.8125, 4)
 
 [node name="Bullet" type="CharacterBody2D"]
 script = ExtResource("1_oduel")
+explotion = ExtResource("2_ycag2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.5, 0)
@@ -38,7 +42,7 @@ amount = 16
 lifetime = 0.2
 process_material = SubResource("ParticleProcessMaterial_oduel")
 
-[node name="Sprite2D" type="Sprite2D" parent="."]
+[node name="BulletTexture" type="Sprite2D" parent="."]
 modulate = Color(0.39215687, 0.39215687, 0.39215687, 1)
 position = Vector2(0, -1)
 texture = ExtResource("1_xjght")

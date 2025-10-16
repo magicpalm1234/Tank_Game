@@ -1,6 +1,58 @@
-[gd_scene load_steps=2 format=3 uid="uid://vasn6jbsld0j"]
+[gd_scene load_steps=9 format=3 uid="uid://vasn6jbsld0j"]
 
 [ext_resource type="Script" uid="uid://bnsiyhb4b6rni" path="res://Scripts/enemy.gd" id="1_hghv2"]
+[ext_resource type="Texture2D" uid="uid://g2ytnft66wce" path="res://Assets/YellowTank.png" id="2_1f0kj"]
+[ext_resource type="PackedScene" uid="uid://bisfhyp5uwhr5" path="res://Scenes/explotions.tscn" id="2_afpow"]
 
-[node name="Enemy" type="Node2D"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_0830c"]
+atlas = ExtResource("2_1f0kj")
+region = Rect2(55, 0, 55, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_afpow"]
+atlas = ExtResource("2_1f0kj")
+region = Rect2(0, 0, 55, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_287tu"]
+atlas = ExtResource("2_1f0kj")
+region = Rect2(55, 0, 55, 18)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_0830c"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_0830c")
+}],
+"loop": true,
+"name": &"Idle",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_afpow")
+}, {
+"duration": 3.0,
+"texture": SubResource("AtlasTexture_287tu")
+}],
+"loop": true,
+"name": &"Shooting",
+"speed": 5.0
+}]
+
+[sub_resource type="CapsuleShape2D" id="CapsuleShape2D_1f0kj"]
+radius = 9.0
+height = 36.0
+
+[node name="Enemy" type="CharacterBody2D"]
 script = ExtResource("1_hghv2")
+explotions = ExtResource("2_afpow")
+health = 100.0
+
+[node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["enemy"]]
+sprite_frames = SubResource("SpriteFrames_0830c")
+animation = &"Shooting"
+autoplay = "Shooting"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2(10, 0)
+rotation = 1.5707964
+shape = SubResource("CapsuleShape2D_1f0kj")

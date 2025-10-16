@@ -47,7 +47,7 @@ animations = [{
 "duration": 5.0,
 "texture": SubResource("AtlasTexture_1eoag")
 }],
-"loop": true,
+"loop": false,
 "name": &"default",
 "speed": 5.0
 }]
@@ -55,4 +55,5 @@ animations = [{
 [node name="Explotion" type="AnimatedSprite2D"]
 sprite_frames = SubResource("SpriteFrames_tstu4")
 autoplay = "default"
-frame_progress = 0.8979801
+frame = 5
+frame_progress = 1.0
