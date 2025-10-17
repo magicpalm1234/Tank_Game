@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://q15kiimltahp"
-path="res://.godot/imported/TankBackround.png-0770f758eabafd94ed9cff269161a596.ctex"
+uid="uid://dximyrk7t8t6v"
+path="res://.godot/imported/TankBackround.png-b69747df344e44111f26d9e7f06d437e.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://Assets/TankBackround.png"
-dest_files=["res://.godot/imported/TankBackround.png-0770f758eabafd94ed9cff269161a596.ctex"]
+source_file="res://TankBackround.png"
+dest_files=["res://.godot/imported/TankBackround.png-b69747df344e44111f26d9e7f06d437e.ctex"]
 
 [params]
 

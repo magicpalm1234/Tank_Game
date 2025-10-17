@@ -21,7 +21,7 @@ anim_speed_max = 1.0
 [node name="Explotions" type="GPUParticles2D"]
 material = SubResource("CanvasItemMaterial_sk82f")
 emitting = false
-amount = 10
+amount = 25
 texture = ExtResource("1_akawi")
 one_shot = true
 explosiveness = 0.8

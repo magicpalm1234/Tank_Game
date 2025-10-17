@@ -1,29 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://buf43s6jfawbh"]
+[gd_scene load_steps=2 format=3 uid="uid://buf43s6jfawbh"]
 
-[ext_resource type="Texture2D" uid="uid://cgod2vf26fr1g" path="res://Assets/TankBackround.png" id="1_bo1nx"]
-[ext_resource type="PackedScene" uid="uid://vasn6jbsld0j" path="res://Scenes/enemy.tscn" id="2_8gbba"]
-[ext_resource type="PackedScene" uid="uid://udrltsm15gwx" path="res://Scenes/buggy.tscn" id="2_jjvhh"]
-
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_jjvhh"]
-size = Vector2(298, 76)
+[ext_resource type="PackedScene" uid="uid://cxnheyvwt8tge" path="res://Scenes/level_one.tscn" id="1_jjgbg"]
 
 [node name="Main" type="Node2D"]
 
-[node name="TankBackround" type="Sprite2D" parent="."]
-position = Vector2(80, 0)
-texture = ExtResource("1_bo1nx")
-
-[node name="Buggy" parent="." instance=ExtResource("2_jjvhh")]
-
-[node name="Camera2D" type="Camera2D" parent="."]
-position = Vector2(80, 0)
-zoom = Vector2(4, 4)
-
-[node name="Enemy" parent="." instance=ExtResource("2_8gbba")]
-position = Vector2(169, 1)
-
-[node name="StaticBody2D" type="StaticBody2D" parent="."]
-
-[node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
-position = Vector2(80, 48)
-shape = SubResource("RectangleShape2D_jjvhh")
+[node name="LevelOne" parent="." instance=ExtResource("1_jjgbg")]

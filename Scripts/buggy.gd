@@ -4,7 +4,7 @@ class_name Tank
 
 @export var bullet_instance: PackedScene
 #@export var bullet: Bullet
-@onready var camera: Camera2D = $Camera2D
+@onready var camera: Camera2D = $"../Camera2D"
 @onready var tank_barrel: AnimatedSprite2D = $TankBarrel
 var reloaded := true # has reloaded variable
 var max_elevation := -30.0 # max rotation for the barrel

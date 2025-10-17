@@ -35,7 +35,7 @@ func _on_area_2d_body_entered(body: Node2D) -> void:
 
 func destroy():
 	$BulletTexture.hide()
-	$SmokeTrail.queue_free()
+	$SmokeTrail.hide()
 	speed = 0
 	
 	var new_explotion = explotion.instantiate()

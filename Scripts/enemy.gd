@@ -33,6 +33,8 @@ func shoot():
 		$AnimatedSprite2D.play("Shooting")
 		var new_bullet = bullet.instantiate()
 		add_child(new_bullet)
+		
+		new_bullet.damage = 20
 		new_bullet.rotation_degrees = 180
 		new_bullet.speed = -1000
 		new_bullet.position = Vector2(-15,-5)
