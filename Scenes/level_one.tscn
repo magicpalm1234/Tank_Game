@@ -1,6 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://cxnheyvwt8tge"]
+[gd_scene load_steps=6 format=3 uid="uid://cxnheyvwt8tge"]
 
-[ext_resource type="Texture2D" uid="uid://cgod2vf26fr1g" path="res://Assets/TankBackround.png" id="1_hi7j2"]
+[ext_resource type="PackedScene" uid="uid://ccffayfi2ejuy" path="res://Scenes/backround.tscn" id="1_hi7j2"]
+[ext_resource type="Script" uid="uid://kydrq6rjsvew" path="res://Scripts/level_one.gd" id="1_ik1yt"]
 [ext_resource type="PackedScene" uid="uid://udrltsm15gwx" path="res://Scenes/buggy.tscn" id="2_ik1yt"]
 [ext_resource type="PackedScene" uid="uid://vasn6jbsld0j" path="res://Scenes/enemy.tscn" id="3_b7vm3"]
 
@@ -8,10 +9,9 @@
 size = Vector2(298, 76)
 
 [node name="LevelOne" type="Node2D"]
+script = ExtResource("1_ik1yt")
 
-[node name="TankBackround" type="Sprite2D" parent="."]
-position = Vector2(80, 0)
-texture = ExtResource("1_hi7j2")
+[node name="Backround" parent="." instance=ExtResource("1_hi7j2")]
 
 [node name="Buggy" parent="." instance=ExtResource("2_ik1yt")]
 
@@ -20,7 +20,7 @@ position = Vector2(80, 0)
 zoom = Vector2(4, 4)
 
 [node name="Enemy" parent="." instance=ExtResource("3_b7vm3")]
-position = Vector2(169, 1)
+position = Vector2(246, 1)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 

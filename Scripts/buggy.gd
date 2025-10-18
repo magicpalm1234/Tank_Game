@@ -38,12 +38,12 @@ func shoot(): # shoot code
 	if reloaded == true: # only shoot chen you have reloaded
 		tank_barrel.play("Shoot")
 		camera_shake()
+		knockback()
 		
 		var new_bullet = bullet_instance.instantiate() # spawning the bullet
 		add_child(new_bullet)
-		
-		
 		new_bullet.position = tank_barrel.position
+		
 		new_bullet.show()
 		new_bullet.speed = 1000
 		new_bullet.rotation_degrees = tank_barrel.rotation_degrees
@@ -62,3 +62,14 @@ func camera_shake(): # shakes the camera in a randomly generated way
 		tween.tween_property(camera, "offset", Vector2(randf_range(-5, 5),randf_range(-5, 5)), 0.01)
 	tween.tween_property(camera, "offset", Vector2(0,0), 0.1)
 	
+
+func knockback():
+	var tween = create_tween()
+	var knockback_amount := 10
+	
+	tween.tween_property(self, "position", Vector2(-knockback_amount,0), 0.1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
+	
+	rotation_degrees = -1
+	tween.tween_property(self, "position", Vector2(10,0), 1)
+	await tween.finished
+	rotation_degrees = 0

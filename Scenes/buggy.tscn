@@ -39,42 +39,42 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_vrue0"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_7xk6u"]
 atlas = ExtResource("1_efscn")
-region = Rect2(0, 19, 51, 19)
-
-[sub_resource type="AtlasTexture" id="AtlasTexture_07ppb"]
-atlas = ExtResource("1_efscn")
-region = Rect2(59, 19, 51, 19)
+region = Rect2(55, 19, 55, 19)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sl7a6"]
 atlas = ExtResource("1_efscn")
 region = Rect2(0, 0, 55, 19)
 
-[sub_resource type="AtlasTexture" id="AtlasTexture_7xk6u"]
+[sub_resource type="AtlasTexture" id="AtlasTexture_42al0"]
 atlas = ExtResource("1_efscn")
-region = Rect2(0, 19, 55, 19)
+region = Rect2(110, 0, 55, 19)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8q0rl"]
+atlas = ExtResource("1_efscn")
+region = Rect2(55, 0, 55, 19)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lq4iq"]
 animations = [{
 "frames": [{
-"duration": 3.0,
-"texture": SubResource("AtlasTexture_vrue0")
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_7xk6u")
 }, {
-"duration": 3.0,
-"texture": SubResource("AtlasTexture_07ppb")
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_sl7a6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_42al0")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8q0rl")
 }],
 "loop": true,
 "name": &"Driving",
 "speed": 5.0
 }, {
-"frames": [{
-"duration": 1.0,
-"texture": SubResource("AtlasTexture_sl7a6")
-}, {
-"duration": 3.0,
-"texture": SubResource("AtlasTexture_7xk6u")
-}],
+"frames": [],
 "loop": true,
 "name": &"Shooting",
 "speed": 5.0
@@ -99,6 +99,8 @@ offset = Vector2(11, 0)
 [node name="TankBody" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_lq4iq")
 animation = &"Driving"
+autoplay = "Driving"
+frame_progress = 0.9595797
 centered = false
 offset = Vector2(-22, -9)
 

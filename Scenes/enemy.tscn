@@ -1,13 +1,48 @@
-[gd_scene load_steps=10 format=3 uid="uid://vasn6jbsld0j"]
+[gd_scene load_steps=17 format=3 uid="uid://vasn6jbsld0j"]
 
 [ext_resource type="Script" uid="uid://bnsiyhb4b6rni" path="res://Scripts/enemy.gd" id="1_hghv2"]
 [ext_resource type="Texture2D" uid="uid://g2ytnft66wce" path="res://Assets/YellowTank.png" id="2_1f0kj"]
 [ext_resource type="PackedScene" uid="uid://bisfhyp5uwhr5" path="res://Scenes/explotions.tscn" id="2_afpow"]
 [ext_resource type="PackedScene" uid="uid://cnpcn7l25ujmi" path="res://Scenes/bullet.tscn" id="3_287tu"]
+[ext_resource type="Texture2D" uid="uid://bwrewd554ewb0" path="res://Assets/YellowTankBarrel.png" id="4_0830c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_8uf12"]
+atlas = ExtResource("4_0830c")
+region = Rect2(0, 0, 25, 7)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_po0sg"]
+atlas = ExtResource("4_0830c")
+region = Rect2(25, 0, 25, 7)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_haro7"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_8uf12")
+}, {
+"duration": 0.1,
+"texture": SubResource("AtlasTexture_po0sg")
+}],
+"loop": false,
+"name": &"Shooting",
+"speed": 5.0
+}]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_0830c"]
 atlas = ExtResource("2_1f0kj")
-region = Rect2(55, 0, 55, 18)
+region = Rect2(0, 18, 55, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_ghaa6"]
+atlas = ExtResource("2_1f0kj")
+region = Rect2(55, 18, 55, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_1dp5w"]
+atlas = ExtResource("2_1f0kj")
+region = Rect2(55, 36, 55, 18)
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_auwsv"]
+atlas = ExtResource("2_1f0kj")
+region = Rect2(0, 36, 55, 18)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_afpow"]
 atlas = ExtResource("2_1f0kj")
@@ -22,6 +57,15 @@ animations = [{
 "frames": [{
 "duration": 1.0,
 "texture": SubResource("AtlasTexture_0830c")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_ghaa6")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_1dp5w")
+}, {
+"duration": 1.0,
+"texture": SubResource("AtlasTexture_auwsv")
 }],
 "loop": true,
 "name": &"Idle",
@@ -49,11 +93,20 @@ explotions = ExtResource("2_afpow")
 bullet = ExtResource("3_287tu")
 health = 100.0
 
+[node name="AnimatedSprite2D2" type="AnimatedSprite2D" parent="."]
+position = Vector2(-28, -8)
+sprite_frames = SubResource("SpriteFrames_haro7")
+animation = &"Shooting"
+frame = 1
+frame_progress = 1.0
+centered = false
+
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["enemy"]]
+position = Vector2(-28, -9)
 sprite_frames = SubResource("SpriteFrames_0830c")
-animation = &"Idle"
+animation = &"Shooting"
 autoplay = "Idle"
-frame_progress = 0.29979134
+centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(10, 0)

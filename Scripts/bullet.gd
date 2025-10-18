@@ -40,6 +40,7 @@ func destroy():
 	
 	var new_explotion = explotion.instantiate()
 	add_child(new_explotion)
+	
 	await new_explotion.animation_finished
 	
 	queue_free()

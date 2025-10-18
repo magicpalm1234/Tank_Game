@@ -10,6 +10,7 @@ var reloaded := true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	
 	add_to_group("enemy")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -30,7 +31,7 @@ func take_damage(amount):
 
 func shoot():
 	if reloaded == true:
-		$AnimatedSprite2D.play("Shooting")
+		$AnimatedSprite2D2.play("Shooting")
 		var new_bullet = bullet.instantiate()
 		add_child(new_bullet)
 		
@@ -45,8 +46,7 @@ func shoot():
 
 func die():
 	var new_explotions = explotions.instantiate()
-	add_child(new_explotions)
+	add_sibling(new_explotions)
 	new_explotions.emitting = true
-	$AnimatedSprite2D.play("Idle")
-	await new_explotions.finished
+	new_explotions.position = position
 	queue_free()
