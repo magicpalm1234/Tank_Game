@@ -37,12 +37,14 @@ func reload(): # reload code
 func shoot(): # shoot code
 	if reloaded == true: # only shoot chen you have reloaded
 		tank_barrel.play("Shoot")
-		camera_shake()
-		knockback()
-		
+		camera_shake(10)
+		knockback(4)
+		$CollisionShape2D.disabled = true
 		var new_bullet = bullet_instance.instantiate() # spawning the bullet
-		add_child(new_bullet)
+		add_sibling(new_bullet)
 		new_bullet.position = tank_barrel.position
+		new_bullet.z_index = 1
+		
 		
 		new_bullet.show()
 		new_bullet.speed = 1000
@@ -50,26 +52,28 @@ func shoot(): # shoot code
 		
 		reloaded = false
 		reload()
+		await get_tree().create_timer(0.1).timeout
+		$CollisionShape2D.disabled = false
 
 func take_damage(amount):
 	health -= amount
 	if health <= 0:
 		die()
 
-func camera_shake(): # shakes the camera in a randomly generated way
+func camera_shake(shake_amount): # shakes the camera in a randomly generated way
 	var tween = create_tween()
-	for shake_amount in 10: # how many times it changes position
+	
+	for shake in shake_amount: # how many times it changes position
 		tween.tween_property(camera, "offset", Vector2(randf_range(-5, 5),randf_range(-5, 5)), 0.01)
 	tween.tween_property(camera, "offset", Vector2(0,0), 0.1)
 	
 
-func knockback():
+func knockback(knockback_amount):
 	var tween = create_tween()
-	var knockback_amount := 10
 	
 	tween.tween_property(self, "position", Vector2(-knockback_amount,0), 0.1).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUAD)
 	
 	rotation_degrees = -1
-	tween.tween_property(self, "position", Vector2(10,0), 1)
+	tween.tween_property(self, "position", Vector2(knockback_amount,0), 1)
 	await tween.finished
 	rotation_degrees = 0
