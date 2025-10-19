@@ -40,6 +40,7 @@ func shoot(): # shoot code
 		camera_shake(10)
 		knockback(4)
 		$CollisionShape2D.disabled = true
+		
 		var new_bullet = bullet_instance.instantiate() # spawning the bullet
 		add_sibling(new_bullet)
 		new_bullet.position = tank_barrel.position
@@ -57,6 +58,7 @@ func shoot(): # shoot code
 
 func take_damage(amount):
 	health -= amount
+	camera_shake(amount / 2)
 	if health <= 0:
 		die()
 

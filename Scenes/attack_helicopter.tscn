@@ -1,4 +1,8 @@
-[gd_scene load_steps=8 format=4 uid="uid://cb846q24srvib"]
+[gd_scene load_steps=11 format=4 uid="uid://cb846q24srvib"]
+
+[ext_resource type="Script" uid="uid://djemrxj7vjgbp" path="res://Scripts/attack_helicopter.gd" id="1_piyw8"]
+[ext_resource type="PackedScene" uid="uid://bisfhyp5uwhr5" path="res://Scenes/explotions.tscn" id="2_eo726"]
+[ext_resource type="PackedScene" uid="uid://bbu332a0mcivn" path="res://Scenes/small_bullet.tscn" id="3_eo726"]
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_jptuh"]
 _data = PackedByteArray("AAADAAUAAAABAAAAaAAAACYAAAAoAgAAUklGRiACAABXRUJQVlA4TBQCAAAvZ0AJEF+gJpKt5sfu9983UQRm6HCBgGxDQRtJyuVcnAdW9NLRBP8biCTj/wmhgi5KaSOZ0cL8BwD8/+sIi8sM6n1ZFkU36LTfPKWwB+A4AONIMWGkke4HV5GhPOlIZfIDSCaWnAbdB7iWjCXauFdBOz35dzv2rHfFAyL678BtG0dSgNt6d9zyCmh8rqycCV8rzuczXXBVvjpW0/IPSuCBhU6jvr8lp/Ljgvnvu8y2SHn7Rt53aBdtZVtDxFy3J84sog8tihHLxjMXQR/eLjqRvb3HYR9vBoN7fRF0y3YRi9baMRYh3MkoXQQRe7OI5X2Kw6IfQpC5dBHkLtgoUnXwsQi5OdunMgD2JlGmLmK2kHIAF6NWkbzB3U3sBSLSJLGsIVqQ72UXsbe8epo6T5eRlnVFF9zdRFRtgRijqHq21HlbrjnRlhMQcaw5EZCaWqL/OxejjeSrYm8XAbCaln9QAkG74Azq+1tyqm8A8993mW2Z8o1sbN2yXUS51hAx+2Q/vFHEzCfMC6IYsWw8tzxxACbRFfMHi1v39h6HfbwZDO71kg/LjCIiIVprx1iEcCcjcZzAKlJv4hrGYdEPIcicXNpEuWUHH4uQm7N9SkuriEiJuojZwj7NHjqrSCzFdDexF4hIk4gIaouYu4i95dXT1Lm4DFdfdMHdTUTVFogxiqpnS5235ZoTbTkBEceaEwGpaUoE")
@@ -41,17 +45,21 @@ animations = [{
 }]
 
 [sub_resource type="CapsuleShape2D" id="CapsuleShape2D_jptuh"]
-radius = 7.0
+radius = 5.0
 height = 42.0
 
 [node name="AttackHelicopter" type="CharacterBody2D"]
+script = ExtResource("1_piyw8")
+explotions = ExtResource("2_eo726")
+small_bullet = ExtResource("3_eo726")
+health = 50.0
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="."]
 texture_filter = 1
 sprite_frames = SubResource("SpriteFrames_pkmtq")
 animation = &"Fly"
 autoplay = "Fly"
-frame_progress = 0.57769346
+frame_progress = 0.5764267
 metadata/_aseprite_wizard_interface_config_ = {
 "animation_section": false,
 "layer_section": true,
@@ -75,6 +83,6 @@ metadata/_aseprite_wizard_config_ = {
 metadata/_aseprite_wizard_source_file_hash_ = "eb08dc1d5c9835f12aa468bd7927f6d0"
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
-position = Vector2(-1, 0)
+position = Vector2(-2, 2)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_jptuh")

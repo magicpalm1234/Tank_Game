@@ -1,0 +1,14 @@
+[remap]
+
+importer="aseprite_wizard.plugin.noop"
+type="PackedDataContainer"
+uid="uid://d1fr7aoqanpyw"
+path="res://.godot/imported/SmallBullet.aseprite-379409d7a0dbc6988c1b9f7468b0d9de.res"
+
+[deps]
+
+source_file="res://Assets/SmallBullet.aseprite"
+dest_files=["res://.godot/imported/SmallBullet.aseprite-379409d7a0dbc6988c1b9f7468b0d9de.res"]
+
+[params]
+

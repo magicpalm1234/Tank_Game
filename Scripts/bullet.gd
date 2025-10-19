@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 class_name Bullet
 
-@export var enemy: Enemy
 
 @export var explotion: PackedScene
 
