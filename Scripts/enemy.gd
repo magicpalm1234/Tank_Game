@@ -28,7 +28,7 @@ func take_damage(amount):
 func shoot():
 	if reloaded == true:
 		$AnimatedSprite2D2.play("Shooting")
-		var new_bullet = bullet.instantiate()
+		var new_bullet = preload("res://Scenes/bullet.tscn").instantiate()
 		add_child(new_bullet)
 		
 		new_bullet.damage = 20

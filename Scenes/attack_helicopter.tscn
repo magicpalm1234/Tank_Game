@@ -1,7 +1,7 @@
 [gd_scene load_steps=11 format=4 uid="uid://cb846q24srvib"]
 
 [ext_resource type="Script" uid="uid://djemrxj7vjgbp" path="res://Scripts/attack_helicopter.gd" id="1_piyw8"]
-[ext_resource type="PackedScene" uid="uid://bisfhyp5uwhr5" path="res://Scenes/explotions.tscn" id="2_eo726"]
+[ext_resource type="PackedScene" uid="uid://bisfhyp5uwhr5" path="res://Scenes/explosions.tscn" id="2_eo726"]
 [ext_resource type="PackedScene" uid="uid://bbu332a0mcivn" path="res://Scenes/small_bullet.tscn" id="3_eo726"]
 
 [sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_jptuh"]

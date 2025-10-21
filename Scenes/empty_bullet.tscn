@@ -1,0 +1,22 @@
+[gd_scene load_steps=3 format=3 uid="uid://cw7ru2sbrig1x"]
+
+[ext_resource type="Texture2D" uid="uid://budvkn4b48psv" path="res://Assets/Bullet.png" id="1_dwuqi"]
+
+[sub_resource type="PhysicsMaterial" id="PhysicsMaterial_dwuqi"]
+friction = 0.25
+rough = true
+bounce = 0.1
+
+[node name="EmptyBullet" type="RigidBody2D"]
+collision_layer = 3
+collision_mask = 3
+physics_material_override = SubResource("PhysicsMaterial_dwuqi")
+gravity_scale = 0.5
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+position = Vector2(-2, -1)
+texture = ExtResource("1_dwuqi")
+centered = false
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="."]
+polygon = PackedVector2Array(2, 0, 2, 1, -2, 1, -2, -1, 3, -1, 3, 0)

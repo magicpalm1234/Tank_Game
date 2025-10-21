@@ -1,0 +1,38 @@
+[gd_scene load_steps=6 format=3 uid="uid://cbrit85gp8dmq"]
+
+[sub_resource type="Gradient" id="Gradient_si3tk"]
+colors = PackedColorArray(1, 0.54901963, 0, 1, 1, 0.64705884, 0, 1)
+
+[sub_resource type="GradientTexture1D" id="GradientTexture1D_mg680"]
+gradient = SubResource("Gradient_si3tk")
+
+[sub_resource type="Curve" id="Curve_ica8g"]
+_data = [Vector2(0, 1), 0.0, 0.0, 0, 0, Vector2(1, 0.20700008), 0.0, 0.0, 0, 0]
+point_count = 2
+
+[sub_resource type="CurveTexture" id="CurveTexture_c373p"]
+curve = SubResource("Curve_ica8g")
+
+[sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_si3tk"]
+resource_local_to_scene = true
+particle_flag_disable_z = true
+spread = 90.0
+initial_velocity_min = -50.0
+initial_velocity_max = -20.0
+gravity = Vector3(0, 50, 0)
+scale_curve = SubResource("CurveTexture_c373p")
+color_ramp = SubResource("GradientTexture1D_mg680")
+collision_mode = 1
+collision_friction = 0.1
+collision_bounce = 0.25
+collision_use_scale = true
+
+[node name="RicochetParticles" type="GPUParticles2D"]
+amount = 20
+lifetime = 3.0
+preprocess = 10.0
+explosiveness = 1.0
+trail_enabled = true
+trail_lifetime = 0.01
+trail_sections = 10
+process_material = SubResource("ParticleProcessMaterial_si3tk")

@@ -1,4 +1,4 @@
-[gd_scene load_steps=7 format=3 uid="uid://cxnheyvwt8tge"]
+[gd_scene load_steps=8 format=3 uid="uid://cxnheyvwt8tge"]
 
 [ext_resource type="PackedScene" uid="uid://ccffayfi2ejuy" path="res://Scenes/backround.tscn" id="1_hi7j2"]
 [ext_resource type="Script" uid="uid://kydrq6rjsvew" path="res://Scripts/level_one.gd" id="1_ik1yt"]
@@ -7,7 +7,10 @@
 [ext_resource type="PackedScene" uid="uid://cb846q24srvib" path="res://Scenes/attack_helicopter.tscn" id="5_b7vm3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gni6d"]
-size = Vector2(298, 76)
+size = Vector2(1054, 76)
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_b7vm3"]
+polygon = PackedVector2Array(-71, 10, 311, 10, 311, 86, -71, 86, -71, 9)
 
 [node name="LevelOne" type="Node2D"]
 script = ExtResource("1_ik1yt")
@@ -31,3 +34,6 @@ shape = SubResource("RectangleShape2D_gni6d")
 
 [node name="AttackHelicopter" parent="." instance=ExtResource("5_b7vm3")]
 position = Vector2(294, -67)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+occluder = SubResource("OccluderPolygon2D_b7vm3")

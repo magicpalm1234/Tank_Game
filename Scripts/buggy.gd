@@ -2,7 +2,7 @@ extends CharacterBody2D
 
 class_name Tank
 
-@export var bullet_instance: PackedScene
+@export var empty_bullet: PackedScene
 #@export var bullet: Bullet
 @onready var camera: Camera2D = $"../Camera2D"
 @onready var tank_barrel: AnimatedSprite2D = $TankBarrel
@@ -30,8 +30,16 @@ func _physics_process(delta: float) -> void:
 func die(): # die code
 	queue_free()
 
-func reload(): # reload code
-	await get_tree().create_timer(3.0).timeout # reload time of three seconds
+
+func reload(time): # reload code
+	await get_tree().create_timer(1).timeout # time before the bullet gets thrown out
+	var new_empty_bullet = empty_bullet.instantiate()
+	add_sibling(new_empty_bullet)
+	new_empty_bullet.position = position - Vector2(7,9)
+	new_empty_bullet.linear_velocity = Vector2(randf_range(-50, -100), randf_range(-50, -100)) # random throw range
+	new_empty_bullet.rotation_degrees = 30
+	
+	await get_tree().create_timer(time).timeout # reload time in seconds
 	reloaded = true
 
 func shoot(): # shoot code
@@ -41,7 +49,7 @@ func shoot(): # shoot code
 		knockback(4)
 		$CollisionShape2D.disabled = true
 		
-		var new_bullet = bullet_instance.instantiate() # spawning the bullet
+		var new_bullet = preload("res://Scenes/bullet.tscn").instantiate() # spawning the bullet
 		add_sibling(new_bullet)
 		new_bullet.position = tank_barrel.position
 		new_bullet.z_index = 1
@@ -52,7 +60,7 @@ func shoot(): # shoot code
 		new_bullet.rotation_degrees = tank_barrel.rotation_degrees
 		
 		reloaded = false
-		reload()
+		reload(2)
 		await get_tree().create_timer(0.1).timeout
 		$CollisionShape2D.disabled = false
 
