@@ -12,8 +12,9 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	await get_tree().create_timer(3.0).timeout
-	shoot()
+	if not get_tree().paused:
+		await get_tree().create_timer(3.0).timeout
+		shoot()
 
 func reload(): # reload code
 	await get_tree().create_timer(3.0).timeout # reload time of three seconds
@@ -31,7 +32,7 @@ func shoot():
 		var new_bullet = preload("res://Scenes/bullet.tscn").instantiate()
 		add_child(new_bullet)
 		
-		new_bullet.damage = 20
+		new_bullet.damage = randi_range(50, 100)
 		new_bullet.rotation_degrees = 180
 		new_bullet.speed = -1000
 		new_bullet.position = Vector2(-15,-5)

@@ -28,16 +28,23 @@ func _physics_process(delta: float) -> void:
 	
 
 func die(): # die code
+	var new_explosions = preload("res://Scenes/explosions.tscn").instantiate()
+	add_child(new_explosions)
+	new_explosions.emitting = true
+	await new_explosions.finished
 	queue_free()
 
 
 func reload(time): # reload code
-	await get_tree().create_timer(1).timeout # time before the bullet gets thrown out
-	var new_empty_bullet = empty_bullet.instantiate()
-	add_sibling(new_empty_bullet)
-	new_empty_bullet.position = position - Vector2(7,9)
-	new_empty_bullet.linear_velocity = Vector2(randf_range(-50, -100), randf_range(-50, -100)) # random throw range
-	new_empty_bullet.rotation_degrees = 30
+	if not get_tree().paused:
+		await get_tree().create_timer(1).timeout # time before the bullet gets thrown out
+		var new_empty_bullet = empty_bullet.instantiate()
+		add_sibling(new_empty_bullet)
+		
+		new_empty_bullet.position = position - Vector2(7,9)
+		new_empty_bullet.linear_velocity = Vector2(randf_range(-50, -100), randf_range(-50, -100)) # random throw range
+		new_empty_bullet.rotation_degrees = 30
+	
 	
 	await get_tree().create_timer(time).timeout # reload time in seconds
 	reloaded = true

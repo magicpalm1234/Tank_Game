@@ -1,0 +1,75 @@
+[gd_scene load_steps=5 format=3 uid="uid://b2fdoi4lljq2g"]
+
+[ext_resource type="Script" uid="uid://b6txox6ro8ccb" path="res://Scenes/lose_screen.gd" id="1_nk27f"]
+[ext_resource type="FontFile" uid="uid://d3voj87xta0rd" path="res://Assets/Font/Minecraft.ttf" id="1_s2rrh"]
+[ext_resource type="Script" uid="uid://deilt7o6k4u3g" path="res://Scripts/restart_button.gd" id="2_488pv"]
+[ext_resource type="Script" uid="uid://pdhoxp2cc5uu" path="res://Scripts/main_menu_button.gd" id="3_go37l"]
+
+[node name="LoseScreen" type="Control"]
+process_mode = 3
+layout_mode = 3
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -648.0
+offset_top = -365.0
+offset_right = -504.0
+offset_bottom = -284.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(72, 40.5)
+script = ExtResource("1_nk27f")
+
+[node name="Panel" type="Panel" parent="."]
+layout_mode = 1
+anchors_preset = -1
+anchor_top = 0.022000002
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_top = -1.7820002
+pivot_offset = Vector2(72, 40.5)
+
+[node name="Label" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -31.5
+offset_right = 31.5
+offset_bottom = 23.0
+grow_horizontal = 2
+theme_override_fonts/font = ExtResource("1_s2rrh")
+text = "You lost!"
+
+[node name="RestartButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = 94.0
+offset_top = 54.0
+offset_right = 136.0
+offset_bottom = 78.0
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(22, 12)
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("1_s2rrh")
+text = "Main"
+script = ExtResource("2_488pv")
+
+[node name="MainMenuButton" type="Button" parent="."]
+layout_mode = 0
+offset_left = -5.0
+offset_top = 54.0
+offset_right = 63.0
+offset_bottom = 78.0
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(34, 12)
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("1_s2rrh")
+text = "Restart"
+script = ExtResource("3_go37l")
+
+[connection signal="mouse_entered" from="RestartButton" to="RestartButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="RestartButton" to="RestartButton" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="MainMenuButton" to="MainMenuButton" method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="MainMenuButton" to="MainMenuButton" method="_on_mouse_exited"]

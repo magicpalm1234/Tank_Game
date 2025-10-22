@@ -19,6 +19,7 @@ anim_speed_min = 1.0
 anim_speed_max = 1.0
 
 [node name="Explotions" type="GPUParticles2D"]
+process_mode = 3
 material = SubResource("CanvasItemMaterial_sk82f")
 emitting = false
 amount = 25

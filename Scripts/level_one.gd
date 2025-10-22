@@ -8,8 +8,23 @@ func _ready() -> void:
 	tween.tween_property($Enemy, "position", Vector2(176,1), 1)
 	await tween.finished
 	$Enemy.rotation_degrees = 0
+	
 
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
+	if $Buggy.health <= 0:
+		lose()
+
+
+
+
+func win():
 	pass
+
+
+func lose():
+	var new_lose_screen = preload("res://Scenes/lose_screen.tscn").instantiate()
+	add_child(new_lose_screen)
+	get_tree().paused = true
+	

@@ -7,7 +7,7 @@ class_name Bullet
 
 @export var tank: Tank
 @export var speed := 100.0
-@export var damage := 50
+@export var damage := randi_range(30, 60)
 
 
 # Called when the node enters the scene tree for the first time.
