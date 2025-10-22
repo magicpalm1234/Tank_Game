@@ -2,9 +2,6 @@ extends CharacterBody2D
 
 class_name Bullet
 
-
-@export var explosion: PackedScene
-
 @export var tank: Tank
 @export var speed := 100.0
 @export var damage := randi_range(30, 60)
@@ -38,6 +35,7 @@ func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
 
 func ricochet(min_ricochet_angle, max_ricochet_angle):
 	rotation_degrees = randf_range(min_ricochet_angle, max_ricochet_angle)
+	speed /= 3
 
 func explode():
 	$BulletTexture.hide()
@@ -45,7 +43,7 @@ func explode():
 	speed = 0
 	collision_mask = 0
 	
-	var new_explosion = explosion.instantiate()
+	var new_explosion = preload("res://Scenes/explosion.tscn").instantiate()
 	add_child(new_explosion)
 	
 	await new_explosion.animation_finished

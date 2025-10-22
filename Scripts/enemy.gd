@@ -28,17 +28,18 @@ func take_damage(amount):
 
 func shoot():
 	if reloaded == true:
-		$AnimatedSprite2D2.play("Shooting")
-		var new_bullet = preload("res://Scenes/bullet.tscn").instantiate()
-		add_child(new_bullet)
+		if not get_tree().paused:
+			$AnimatedSprite2D2.play("Shooting")
+			var new_bullet = preload("res://Scenes/bullet.tscn").instantiate()
+			add_child(new_bullet)
 		
-		new_bullet.damage = randi_range(50, 100)
-		new_bullet.rotation_degrees = 180
-		new_bullet.speed = -1000
-		new_bullet.position = Vector2(-15,-5)
+			new_bullet.damage = randi_range(50, 100)
+			new_bullet.rotation_degrees = 180
+			new_bullet.speed = -1000
+			new_bullet.position = Vector2(-15,-5)
 		
-		reloaded = false
-		reload()
+			reloaded = false
+			reload()
 
 
 func die():

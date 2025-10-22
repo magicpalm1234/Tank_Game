@@ -1,9 +1,7 @@
-[gd_scene load_steps=5 format=3 uid="uid://b2fdoi4lljq2g"]
+[gd_scene load_steps=3 format=3 uid="uid://b2fdoi4lljq2g"]
 
-[ext_resource type="Script" uid="uid://b6txox6ro8ccb" path="res://Scenes/lose_screen.gd" id="1_nk27f"]
+[ext_resource type="Script" uid="uid://b6txox6ro8ccb" path="res://Scripts/lose_screen.gd" id="1_nk27f"]
 [ext_resource type="FontFile" uid="uid://d3voj87xta0rd" path="res://Assets/Font/Minecraft.ttf" id="1_s2rrh"]
-[ext_resource type="Script" uid="uid://deilt7o6k4u3g" path="res://Scripts/restart_button.gd" id="2_488pv"]
-[ext_resource type="Script" uid="uid://pdhoxp2cc5uu" path="res://Scripts/main_menu_button.gd" id="3_go37l"]
 
 [node name="LoseScreen" type="Control"]
 process_mode = 3
@@ -45,16 +43,15 @@ text = "You lost!"
 
 [node name="RestartButton" type="Button" parent="."]
 layout_mode = 0
-offset_left = 94.0
+offset_left = 78.0
 offset_top = 54.0
-offset_right = 136.0
+offset_right = 146.0
 offset_bottom = 78.0
 scale = Vector2(0.5, 0.5)
-pivot_offset = Vector2(22, 12)
+pivot_offset = Vector2(34, 12)
 mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("1_s2rrh")
-text = "Main"
-script = ExtResource("2_488pv")
+text = "Restart"
 
 [node name="MainMenuButton" type="Button" parent="."]
 layout_mode = 0
@@ -66,10 +63,11 @@ scale = Vector2(0.5, 0.5)
 pivot_offset = Vector2(34, 12)
 mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("1_s2rrh")
-text = "Restart"
-script = ExtResource("3_go37l")
+text = "Main"
 
-[connection signal="mouse_entered" from="RestartButton" to="RestartButton" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="RestartButton" to="RestartButton" method="_on_mouse_exited"]
-[connection signal="mouse_entered" from="MainMenuButton" to="MainMenuButton" method="_on_mouse_entered"]
-[connection signal="mouse_exited" from="MainMenuButton" to="MainMenuButton" method="_on_mouse_exited"]
+[connection signal="mouse_entered" from="RestartButton" to="." method="_on_restart_button_mouse_entered"]
+[connection signal="mouse_exited" from="RestartButton" to="." method="_on_restart_button_mouse_exited"]
+[connection signal="pressed" from="RestartButton" to="." method="_on_restart_button_pressed"]
+[connection signal="mouse_entered" from="MainMenuButton" to="." method="_on_main_menu_button_mouse_entered"]
+[connection signal="mouse_exited" from="MainMenuButton" to="." method="_on_main_menu_button_mouse_exited"]
+[connection signal="pressed" from="MainMenuButton" to="." method="_on_main_menu_button_pressed"]

@@ -106,13 +106,15 @@ centered = false
 
 [node name="AnimatedSprite2D" type="AnimatedSprite2D" parent="." groups=["enemy"]]
 position = Vector2(-28, -9)
+scale = Vector2(1.0181818, 1)
 sprite_frames = SubResource("SpriteFrames_0830c")
 animation = &"Idle"
 autoplay = "Idle"
-frame_progress = 0.7842794
+frame_progress = 0.025086904
 centered = false
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+visible = false
 position = Vector2(10, 0)
 rotation = 1.5707964
 shape = SubResource("CapsuleShape2D_1f0kj")
@@ -122,11 +124,13 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="FixedCollisionShape" type="CollisionPolygon2D" parent="CharacterBody2D"]
+visible = false
 position = Vector2(6, -1)
 scale = Vector2(-1.0000007, 1)
 polygon = PackedVector2Array(17.999987, -5, 17.999987, -6, 14.999989, -6, 14.999989, -5, 10, -5, 10, -6, 8, -6, 8, -7, 4, -7, 4, -6, 2, -6, 2, -7, 1, -7, 1, -8, -2, -8, -2, -7, -5, -7, -5, -8, -9, -8, -9, -7, -10, -7, -10, -6, -14, -6, -14, -5, -18, -5, -18, -3, -17, -3, -17, -2, -11, -2, -11, -1, -13, -1, -13, 0, -14, 0, -14, -1, -20, -1, -20, -5, -21, -5, -21, 0, -22, 0, -22, 2, -21, 2, -21, 4, -19, 4, -19, 3, -19, 3, -18, 3, -18, 5, -13, 10, 6, 10, 11, 5, 11, 3, 10, 3, 10, 2, 12, 2, 12, 3, 13, 3, 13, 1, 11, 1, 11, 0, 8, 0, 8, -1, 10, -1, 10, -2, 13, -2, 13, -3, 29, -3, 29, -5)
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
+visible = false
 position = Vector2(6, -1)
 scale = Vector2(-1.0000014, 1)
 occluder = SubResource("OccluderPolygon2D_0830c")

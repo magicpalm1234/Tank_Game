@@ -1,5 +1,7 @@
 extends Node2D
 
+signal restart_pressed
+
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
@@ -18,7 +20,6 @@ func _process(delta: float) -> void:
 
 
 
-
 func win():
 	pass
 
@@ -27,4 +28,7 @@ func lose():
 	var new_lose_screen = preload("res://Scenes/lose_screen.tscn").instantiate()
 	add_child(new_lose_screen)
 	get_tree().paused = true
-	
+
+func _on_restart_pressed() -> void:
+	get_tree().paused = false
+	get_tree().reload_current_scene()
