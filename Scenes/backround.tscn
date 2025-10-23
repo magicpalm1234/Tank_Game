@@ -33,5 +33,4 @@ repeat_times = 3
 ignore_camera_scroll = true
 
 [node name="Sprite2D" type="Sprite2D" parent="Parallax2D"]
-texture_repeat = 2
 texture = ExtResource("1_ra1ay")
