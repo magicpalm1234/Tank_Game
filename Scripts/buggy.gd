@@ -22,7 +22,7 @@ func _physics_process(delta: float) -> void:
 	tank_barrel.look_at(get_global_mouse_position()) # makes the barrel face the mouse
 	if tank_barrel.rotation_degrees <= max_elevation:
 		tank_barrel.rotation_degrees = max_elevation
-	
+	 
 	if tank_barrel.rotation_degrees >= min_elevation:
 		tank_barrel.rotation_degrees = min_elevation
 	
@@ -44,6 +44,7 @@ func reload(time): # reload code
 		new_empty_bullet.position = position - Vector2(7,9)
 		new_empty_bullet.linear_velocity = Vector2(randf_range(-50, -100), randf_range(-50, -100)) # random throw range
 		new_empty_bullet.rotation_degrees = 30
+		
 	
 	
 	await get_tree().create_timer(time).timeout # reload time in seconds

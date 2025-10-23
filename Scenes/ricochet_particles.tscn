@@ -15,11 +15,11 @@ curve = SubResource("Curve_ica8g")
 
 [sub_resource type="ParticleProcessMaterial" id="ParticleProcessMaterial_si3tk"]
 resource_local_to_scene = true
+lifetime_randomness = 0.1
 particle_flag_disable_z = true
 spread = 90.0
-initial_velocity_min = -50.0
-initial_velocity_max = -20.0
-gravity = Vector3(0, 50, 0)
+initial_velocity_min = -150.0
+gravity = Vector3(0, 98, 0)
 scale_curve = SubResource("CurveTexture_c373p")
 color_ramp = SubResource("GradientTexture1D_mg680")
 collision_mode = 1
@@ -30,8 +30,8 @@ collision_use_scale = true
 [node name="RicochetParticles" type="GPUParticles2D"]
 amount = 20
 lifetime = 3.0
-preprocess = 10.0
 explosiveness = 1.0
+visibility_rect = Rect2(-500, -500, 1000, 1000)
 trail_enabled = true
 trail_lifetime = 0.01
 trail_sections = 10
