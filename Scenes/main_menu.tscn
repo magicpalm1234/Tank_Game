@@ -1,0 +1,132 @@
+[gd_scene load_steps=6 format=4 uid="uid://6w0hhjctlp3w"]
+
+[ext_resource type="Script" uid="uid://rd534d7fnyf6" path="res://Scripts/main_menu.gd" id="1_1ehe0"]
+[ext_resource type="PackedScene" uid="uid://ccffayfi2ejuy" path="res://Scenes/backround.tscn" id="2_48xlc"]
+[ext_resource type="FontFile" uid="uid://d3voj87xta0rd" path="res://Assets/Font/Minecraft.ttf" id="3_ce3w2"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ce3w2"]
+size = Vector2(1155, 20)
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_1ehe0"]
+_data = PackedByteArray("AAADAAUAAAABAAAAKgEAAKwAAACEBQAAUklGRnwFAABXRUJQVlA4THAFAAAvKcEqAA/w/P9D/n/8f/7jAXajbYts2/k4GGgmAZVI5NbBVFIqwZ3NE4JSUAh9Z/OGoNbsohmpungNfuheRwlE9H8CeD/9++Tej6TxzId3ovojRXfCQ1njVvt/aZB0FW3FB8phZL3VWKUnKmRdSZL6Iqvv+AvIFYqG0RYIKJefik6gHEAiT+dqzpc6kFXZNI698mudpJ6l8RKyVOOZpX7nnHJfJElvjijVDaY++WMRNTtJY6NIGpPTjbltkCQmqVth4zQ+zwDxWLSn9IuJvjjvtanotwaUPrV7fco6F6lO/aG04dW9BJQL4sb1+xvS4V0FUoe8MQ4gq1lxSg2IDXCrcsNJ1TOHDvhFLSdQVtq5gLA46PwOXDfKzjtmbzXgHYTrnp2MCvA56yxJe7ipT9+v8ttF0rUgSQfb5cwfSDo8eLUVnOyno7zdOJLOxX4qP1BPkk4PTvMj4SdSm/rGeMJLOqexcW3ktpCkI6k5PMjsEJuhA3cB0Sjq7JzgjCA5nUAw8JfhjYOiM18gE/BWGEYwKkGKnWBdi87sIRonTlLDWw3CjWwMJOlcHZBuMDWMuqqQ70TphGKFjXKHdPIxadJKgJN07QBuFXeK1LhVrLRDOFj9zQhgjLy16fNhZEgGDyUZszP8y6JUIRr1BUU6IBkHceHHHZyuHT8sdfDl2ElvmZ2kE38ZTg08TxYpNsIwpPMpvErnHQs9lg82JQ2j36PfuKZcH9h274l/z8rxsjHx1cswXhiBoONl/gJKe5nr2Fte/ZaeiNJxrz0QJEEcW24R71zoJF2ruPCyvlsUVUJflW65xYfgJfUi4TfWW27K0/+meG69sSpo9TGzNB44NipfTVE6Nj721u+tq+jElKRu5A4LLIq6UabTCO1WBTfuufNWY20cjzjp2mBHVtQ1RR3sekmn1YygPt2NO30q0vlE3nDXlKTjgb8hqRl+TFGqD3w4dWP2BEkP6Jmx12NDl5t0rbykaytKFfUgXUntuSBpqKNK2HGPNNcBvM7HvCTVYDjVp4rMnxmSxiI88/MLCJL6AicN42MgWb+aJKmtog5MB0TrAsp0rjbdgGC1V3nrBHjKD3BWnfxDiQ3t5Hpn1gNR9WVJB0F61Uk4kDR8aTf8VuikRTxuRClIOiagnMWqlrOSziSpLSAb3kq6DESR2I2GkxFXv4N4PiBBuvBq1v2w4XuSzvegRUlPIQmvCq4FSf0pPype5+QlnU9F/oh3DVyfKlmPzN518MNJEknXY2HA91hBfefdHgQwKl4n/GP66rui64Yf1onXAeckZfUbbtFwqpQpS2/VptKsIqwLqZKntHMsKhCkAySRDuvSmJIuI084DStWC3uVDC+sZNVFXGkKFXAS+XhJnLwqNKDouJXrlBoQ+h+xv/iP4TbKXyYzDpZ/ZS4aefHSrEEYr0samP9XxwaviLqsXF/ULH5vnA8FnQszazzj73WfxwPuTlL38XouXlZQ9+EFrq5O718gfbCoG79sT+hahYXOjbTRp7hTdExfTMQOFEltSpKPw8iqQJZhbmTpTcZMEhA1NvKqSG/gjxtZ6tcqrYjTh1OZkqT2RKmerInVudcNvvAkjclVCPcuC09U+z2QTvCSDv67M+D43AhSxXbGYWUjS2OhsVcXl6sQF1FS3/sCfgMU/ABJ1yMnQLywi6Q2pR2/UltkSccjDcg36q2wiE9dTxwv6kBQK3ooNuuyksZUVkXSAKedqB53jokwFakbA0iVBX6VVSFJjVipAKVvJKkZqEGUTtLBVxMY8YSi3i3P6uQ/iywIFeDCmv1UGptfgNPAXmm6/d69WzmpvcC/WQTpuufFrSiNe2HlVknifqoL7xf4/sDm5x4=")
+size_override = Vector2(298, 172)
+
+[node name="MainMenu" type="Node2D"]
+script = ExtResource("1_1ehe0")
+
+[node name="Backround" parent="." instance=ExtResource("2_48xlc")]
+modulate = Color(1, 0.5882353, 0.39215687, 1)
+
+[node name="Camera2D" type="Camera2D" parent="."]
+zoom = Vector2(4, 4)
+
+[node name="Buttons" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+metadata/_edit_use_anchors_ = true
+
+[node name="PlayButton" type="Button" parent="Buttons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -2.0
+anchor_right = -2.0
+offset_left = -121.0
+offset_top = 3.0
+offset_right = -53.0
+offset_bottom = 27.0
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(0, 12)
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("3_ce3w2")
+text = "Play"
+metadata/_edit_use_anchors_ = true
+
+[node name="OptionsButton" type="Button" parent="Buttons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -2.0
+anchor_right = -2.0
+offset_left = -121.0
+offset_top = 23.0
+offset_right = -53.0
+offset_bottom = 47.0
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(0, 12)
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("3_ce3w2")
+text = "Options"
+metadata/_edit_use_anchors_ = true
+
+[node name="QuitButton" type="Button" parent="Buttons"]
+layout_mode = 1
+anchors_preset = -1
+anchor_left = -2.0
+anchor_right = -2.0
+offset_left = -121.0
+offset_top = 43.0
+offset_right = -53.0
+offset_bottom = 67.0
+scale = Vector2(0.5, 0.5)
+pivot_offset = Vector2(0, 12)
+mouse_default_cursor_shape = 2
+theme_override_fonts/font = ExtResource("3_ce3w2")
+text = "Quit"
+metadata/_edit_use_anchors_ = true
+
+[node name="CharacterBody2D" type="CharacterBody2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="CharacterBody2D"]
+visible = false
+position = Vector2(167.5, 20)
+shape = SubResource("RectangleShape2D_ce3w2")
+
+[node name="Node2D" type="Node2D" parent="."]
+position = Vector2(0, -176)
+
+[node name="Parallax2D" type="Parallax2D" parent="Node2D"]
+repeat_size = Vector2(298, 0)
+autoscroll = Vector2(-2.5, 0)
+repeat_times = 7
+
+[node name="Sky" type="Sprite2D" parent="Node2D/Parallax2D"]
+modulate = Color(1, 0.5882353, 0.39215687, 1)
+texture_filter = 1
+texture_repeat = 2
+texture = SubResource("PortableCompressedTexture2D_1ehe0")
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": false,
+"output_section": false,
+"pending_changes": {},
+"slice_section": false
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://Assets/Sky.aseprite",
+"source_uid": 4411062715174081725
+}
+metadata/_aseprite_wizard_source_file_hash_ = "863c58c77d14f829c930238345afc2d0"
+
+[connection signal="mouse_entered" from="Buttons/PlayButton" to="." method="_on_play_button_mouse_entered"]
+[connection signal="mouse_exited" from="Buttons/PlayButton" to="." method="_on_play_button_mouse_exited"]
+[connection signal="pressed" from="Buttons/PlayButton" to="." method="_on_play_button_pressed"]
+[connection signal="mouse_entered" from="Buttons/OptionsButton" to="." method="_on_options_button_mouse_entered"]
+[connection signal="mouse_exited" from="Buttons/OptionsButton" to="." method="_on_options_button_mouse_exited"]
+[connection signal="pressed" from="Buttons/OptionsButton" to="." method="_on_options_button_pressed"]
+[connection signal="mouse_entered" from="Buttons/QuitButton" to="." method="_on_quit_button_mouse_entered"]
+[connection signal="mouse_exited" from="Buttons/QuitButton" to="." method="_on_quit_button_mouse_exited"]
+[connection signal="pressed" from="Buttons/QuitButton" to="." method="_on_quit_button_pressed"]

@@ -38,4 +38,5 @@ position = Vector2(294, -67)
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_b7vm3")
 
+[connection signal="main_menu_pressed" from="." to="." method="_on_main_menu_pressed"]
 [connection signal="restart_pressed" from="." to="." method="_on_restart_pressed"]

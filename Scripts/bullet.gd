@@ -27,16 +27,17 @@ func _process(delta: float) -> void:
 func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
 	var miss_chance = randf_range(0,1)
 	if body.has_method("take_damage"):
-		if miss_chance <= 0.5:
+		if miss_chance <= 0.9:
 			body.take_damage(damage)
 			explode()
-		if miss_chance > 0.5:
+		if miss_chance > 0.9:
 			ricochet(-100, -145)
 
 func ricochet(min_ricochet_angle, max_ricochet_angle):
 	var new_ricochet_paritcles = preload("res://Scenes/ricochet_particles.tscn").instantiate()
 	add_sibling(new_ricochet_paritcles)
 	new_ricochet_paritcles.position = position
+	new_ricochet_paritcles.emitting = true
 	
 	rotation_degrees = randf_range(min_ricochet_angle, max_ricochet_angle)
 	speed /= 3

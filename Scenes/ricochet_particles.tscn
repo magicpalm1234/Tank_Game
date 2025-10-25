@@ -28,11 +28,13 @@ collision_bounce = 0.25
 collision_use_scale = true
 
 [node name="RicochetParticles" type="GPUParticles2D"]
+emitting = false
 amount = 20
 lifetime = 3.0
+one_shot = true
 explosiveness = 1.0
 visibility_rect = Rect2(-500, -500, 1000, 1000)
 trail_enabled = true
-trail_lifetime = 0.01
+trail_lifetime = 0.02
 trail_sections = 10
 process_material = SubResource("ParticleProcessMaterial_si3tk")
