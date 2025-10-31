@@ -121,6 +121,43 @@ metadata/_aseprite_wizard_config_ = {
 }
 metadata/_aseprite_wizard_source_file_hash_ = "863c58c77d14f829c930238345afc2d0"
 
+[node name="Parallax2D2" type="Parallax2D" parent="Node2D"]
+repeat_size = Vector2(298, 0)
+autoscroll = Vector2(-2.5, 0)
+repeat_times = 7
+
+[node name="Sky" type="Sprite2D" parent="Node2D/Parallax2D2"]
+modulate = Color(1, 0.5882353, 0.39215687, 1)
+texture_filter = 1
+texture_repeat = 2
+position = Vector2(0, -172)
+texture = SubResource("PortableCompressedTexture2D_1ehe0")
+metadata/_aseprite_wizard_interface_config_ = {
+"layer_section": false,
+"output_section": false,
+"pending_changes": {},
+"slice_section": false
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://Assets/Sky.aseprite",
+"source_uid": 4411062715174081725
+}
+metadata/_aseprite_wizard_source_file_hash_ = "863c58c77d14f829c930238345afc2d0"
+
 [connection signal="mouse_entered" from="Buttons/PlayButton" to="." method="_on_play_button_mouse_entered"]
 [connection signal="mouse_exited" from="Buttons/PlayButton" to="." method="_on_play_button_mouse_exited"]
 [connection signal="pressed" from="Buttons/PlayButton" to="." method="_on_play_button_pressed"]

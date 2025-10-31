@@ -1,10 +1,11 @@
-[gd_scene load_steps=8 format=3 uid="uid://cxnheyvwt8tge"]
+[gd_scene load_steps=9 format=3 uid="uid://cxnheyvwt8tge"]
 
 [ext_resource type="PackedScene" uid="uid://ccffayfi2ejuy" path="res://Scenes/backround.tscn" id="1_hi7j2"]
 [ext_resource type="Script" uid="uid://kydrq6rjsvew" path="res://Scripts/level_one.gd" id="1_ik1yt"]
 [ext_resource type="PackedScene" uid="uid://udrltsm15gwx" path="res://Scenes/buggy.tscn" id="2_ik1yt"]
 [ext_resource type="PackedScene" uid="uid://vasn6jbsld0j" path="res://Scenes/enemy.tscn" id="3_b7vm3"]
 [ext_resource type="PackedScene" uid="uid://cb846q24srvib" path="res://Scenes/attack_helicopter.tscn" id="5_b7vm3"]
+[ext_resource type="FontFile" uid="uid://d3voj87xta0rd" path="res://Assets/Font/Minecraft.ttf" id="6_gni6d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gni6d"]
 size = Vector2(1054, 76)
@@ -26,6 +27,9 @@ zoom = Vector2(4, 4)
 [node name="Enemy" parent="." instance=ExtResource("3_b7vm3")]
 position = Vector2(246, 1)
 
+[node name="Enemy2" parent="." instance=ExtResource("3_b7vm3")]
+position = Vector2(185, -20)
+
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
 [node name="CollisionShape2D2" type="CollisionShape2D" parent="StaticBody2D"]
@@ -38,5 +42,19 @@ position = Vector2(294, -67)
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_b7vm3")
 
+[node name="Label" type="Label" parent="."]
+offset_left = -64.0
+offset_top = 65.0
+offset_right = -37.0
+offset_bottom = 81.0
+theme_override_colors/font_color = Color(0, 0, 0, 1)
+theme_override_colors/font_outline_color = Color(1, 1, 1, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("6_gni6d")
+theme_override_font_sizes/font_size = 16
+text = "TEXT"
+
+[connection signal="enemy_died" from="." to="." method="_on_enemy_died"]
 [connection signal="main_menu_pressed" from="." to="." method="_on_main_menu_pressed"]
+[connection signal="new_enemy" from="." to="." method="_on_new_enemy"]
 [connection signal="restart_pressed" from="." to="." method="_on_restart_pressed"]

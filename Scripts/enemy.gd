@@ -1,4 +1,4 @@
-extends Node2D
+extends Enemy
 
 @export var explotions: PackedScene
 @export var bullet: PackedScene
@@ -8,6 +8,7 @@ var reloaded := true
 
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	get_parent().emit_signal("new_enemy")
 	add_to_group("enemy")
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -47,4 +48,7 @@ func die():
 	add_sibling(new_explotions)
 	new_explotions.emitting = true
 	new_explotions.position = position
+	await new_explotions.finished
+	remove_from_group("enemy")
+	get_parent().emit_signal("enemy_died")
 	queue_free()

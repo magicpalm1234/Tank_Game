@@ -29,11 +29,18 @@ func _on_options_button_pressed() -> void:
 
 
 func _on_quit_button_pressed() -> void:
+	var tween = create_tween()
+	
+	tween.tween_property($Camera2D, "zoom", Vector2(8, 8), 7.5).set_trans(Tween.TRANS_BACK) # it works, somehow
+	get_child(0).emit_signal("stop_backround_animations") # stops the backround from moving
+	$Node2D/Parallax2D.autoscroll = Vector2(0,0)
+	$Node2D/Parallax2D2.autoscroll = Vector2(0,0)
+	await get_tree().create_timer(1.5).timeout # timer of 1.5 after that the game closes
 	get_tree().quit()
 
 
 
-
+# random button animations, and i know that i can optimize this
 func _on_play_button_mouse_entered() -> void:
 	var tween = create_tween()
 	tween.tween_property($Buttons/PlayButton, "scale", Vector2(0.75, 0.75), 0.2).set_trans(Tween.TRANS_BACK)
