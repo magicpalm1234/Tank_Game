@@ -24,7 +24,7 @@ func _process(delta: float) -> void:
 	
 	if amount_of_enemies <= 0:
 		win()
-	$Label.text = str("Enemies:  2 / ",amount_of_enemies)
+	$Label.text = str("Enemies: ",amount_of_enemies)
 	get_children()
 	
 

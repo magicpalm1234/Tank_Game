@@ -16,9 +16,10 @@ func _process(delta: float) -> void:
 	if not get_tree().paused:
 		await get_tree().create_timer(3.0).timeout
 		shoot()
+	
 
-func reload(): # reload code
-	await get_tree().create_timer(3.0).timeout # reload time of three seconds
+func reload(reload_time): # reload code
+	await get_tree().create_timer(reload_time).timeout # reload time of three seconds
 	reloaded = true
 
 func take_damage(amount):
@@ -40,7 +41,7 @@ func shoot():
 			new_bullet.position = Vector2(-15,-5)
 		
 			reloaded = false
-			reload()
+			reload(randi_range(2,4))
 
 
 func die():

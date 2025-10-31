@@ -28,7 +28,7 @@ zoom = Vector2(4, 4)
 position = Vector2(246, 1)
 
 [node name="Enemy2" parent="." instance=ExtResource("3_b7vm3")]
-position = Vector2(185, -20)
+position = Vector2(91, -36)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
