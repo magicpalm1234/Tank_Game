@@ -16,20 +16,29 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	$ClickSound.pitch_scale = randf_range(2.0,4.0)
 
 
 func _on_play_button_pressed() -> void:
+	
+	$ClickSound.play()
+	await $ClickSound.finished
+	
 	get_tree().change_scene_to_file("res://Scenes/level_one.tscn")
 
 
 func _on_options_button_pressed() -> void:
 	var tween = create_tween()
+	
+	$ClickSound.play()
+	
 	tween.tween_property($Camera2D, "position", Vector2(0, -180), 2).set_trans(Tween.TRANS_EXPO)
 
 
 func _on_quit_button_pressed() -> void:
 	var tween = create_tween()
+	
+	$ClickSound.play()
 	
 	tween.tween_property($Camera2D, "zoom", Vector2(8, 8), 7.5).set_trans(Tween.TRANS_BACK) # it works, somehow
 	get_child(0).emit_signal("stop_backround_animations") # stops the backround from moving

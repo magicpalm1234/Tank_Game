@@ -1,7 +1,8 @@
-[gd_scene load_steps=3 format=3 uid="uid://cwafyr3pn0ml7"]
+[gd_scene load_steps=4 format=3 uid="uid://cwafyr3pn0ml7"]
 
 [ext_resource type="Script" uid="uid://dk81m0uwqbeqv" path="res://Scripts/win_screen.gd" id="1_a00f1"]
 [ext_resource type="FontFile" uid="uid://d3voj87xta0rd" path="res://Assets/Font/Minecraft.ttf" id="1_l5sol"]
+[ext_resource type="AudioStream" uid="uid://dlv82kg4oq6h7" path="res://Assets/Sound/click.wav" id="3_awi1s"]
 
 [node name="WinScreen" type="Control"]
 process_mode = 3
@@ -64,6 +65,11 @@ pivot_offset = Vector2(34, 12)
 mouse_default_cursor_shape = 2
 theme_override_fonts/font = ExtResource("1_l5sol")
 text = "Main"
+
+[node name="ClickSound" type="AudioStreamPlayer2D" parent="."]
+stream = ExtResource("3_awi1s")
+volume_db = 10.0
+pitch_scale = 3.0
 
 [connection signal="mouse_entered" from="RestartButton" to="." method="_on_restart_button_mouse_entered"]
 [connection signal="mouse_exited" from="RestartButton" to="." method="_on_restart_button_mouse_exited"]

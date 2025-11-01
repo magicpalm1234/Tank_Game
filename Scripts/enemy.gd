@@ -10,6 +10,7 @@ var reloaded := true
 func _ready() -> void:
 	get_parent().emit_signal("new_enemy")
 	add_to_group("enemy")
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:

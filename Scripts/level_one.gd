@@ -15,7 +15,6 @@ func _ready() -> void:
 	$Enemy.rotation_degrees = 0
 	
 
-
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
 	

@@ -10,14 +10,22 @@ func _ready() -> void:
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	pass
+	$ClickSound.pitch_scale = randf_range(2.0,4.0)
 
 
 func _on_restart_button_pressed() -> void:
+	
+	$ClickSound.play()
+	await $ClickSound.finished
+	
 	get_parent().emit_signal("restart_pressed")
 
 
 func _on_main_menu_button_pressed() -> void:
+	
+	$ClickSound.play()
+	await $ClickSound.finished
+	
 	get_parent().emit_signal("main_menu_pressed")
 
 
