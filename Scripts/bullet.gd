@@ -2,7 +2,6 @@ extends CharacterBody2D
 
 class_name Bullet
 
-@export var tank: Tank
 @export var speed := 100.0
 @export var damage := randi_range(30, 60)
 

@@ -20,19 +20,17 @@ func _process(delta: float) -> void:
 
 
 func _on_play_button_pressed() -> void:
-	
-	$ClickSound.play()
-	await $ClickSound.finished
-	
-	get_tree().change_scene_to_file("res://Scenes/level_one.tscn")
-
-
-func _on_options_button_pressed() -> void:
 	var tween = create_tween()
 	
 	$ClickSound.play()
 	
 	tween.tween_property($Camera2D, "position", Vector2(0, -180), 2).set_trans(Tween.TRANS_EXPO)
+
+
+func _on_options_button_pressed() -> void:
+	
+	$ClickSound.play()
+	
 
 
 func _on_quit_button_pressed() -> void:

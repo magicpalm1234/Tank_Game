@@ -1,4 +1,4 @@
-[gd_scene load_steps=16 format=3 uid="uid://udrltsm15gwx"]
+[gd_scene load_steps=17 format=3 uid="uid://udrltsm15gwx"]
 
 [ext_resource type="Texture2D" uid="uid://dc67khtv8q6ta" path="res://Assets/TankBarrel.png" id="1_07ppb"]
 [ext_resource type="Script" uid="uid://t3254pk6gggf" path="res://Scripts/buggy.gd" id="1_7xk6u"]
@@ -38,6 +38,9 @@ animations = [{
 "name": &"Shoot",
 "speed": 5.0
 }]
+
+[sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_sl7a6"]
+polygon = PackedVector2Array(-1, -1, -1, 1, 19, 1, 19, -1, 9, -1, 9, -2, 6, -2, 6, -1)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7xk6u"]
 atlas = ExtResource("1_efscn")
@@ -85,19 +88,29 @@ radius = 6.0
 height = 18.0
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_7xk6u"]
-polygon = PackedVector2Array(-2, -8, 1, -8, 1, -7, 2, -7, 2, -6, 4, -6, 4, -7, 8, -7, 8, -6, 10, -6, 10, -5, 16, -5, 16, -6, 19, -6, 19, -5, 29, -5, 29, -3, 13, -3, 13, -2, 10, -2, 10, -1, 8, -1, 8, 0, 11, 0, 11, 1, 13, 1, 13, 3, 12, 3, 12, 2, 10, 2, 10, 3, 11, 3, 11, 5, 6, 10, -13, 10, -18, 5, -18, 3, -19, 3, -19, 4, -21, 4, -21, 2, -22, 2, -22, 0, -21, 0, -21, -5, -20, -5, -20, -1, -14, -1, -14, 0, -13, 0, -13, -1, -11, -1, -11, -2, -17, -2, -17, -3, -18, -3, -18, -5, -14, -5, -14, -6, -10, -6, -10, -7, -9, -7, -9, -8, -5, -8, -5, -7, -2, -7)
+polygon = PackedVector2Array(-2, -8, 1, -8, 1, -7, 2, -7, 2, -6, 4, -6, 4, -7, 8, -7, 8, -6, 10, -6, 10, -3, 13, -3, 13, -3, 13, -2, 10, -2, 10, -1, 8, -1, 8, 0, 11, 0, 11, 1, 13, 1, 13, 3, 12, 3, 12, 2, 10, 2, 10, 3, 11, 3, 11, 5, 6, 10, -13, 10, -18, 5, -18, 3, -19, 3, -19, 4, -21, 4, -21, 2, -22, 2, -22, 0, -21, 0, -21, -5, -20, -5, -20, -1, -14, -1, -14, 0, -13, 0, -13, -1, -11, -1, -11, -2, -17, -2, -17, -3, -18, -3, -18, -5, -14, -5, -14, -6, -10, -6, -10, -7, -9, -7, -9, -8, -5, -8, -5, -7, -2, -7)
 
 [node name="Buggy" type="CharacterBody2D" groups=["bullet"]]
 script = ExtResource("1_7xk6u")
 empty_bullet = ExtResource("3_sl7a6")
 
-[node name="TankBarrel" type="AnimatedSprite2D" parent="."]
+[node name="TankBarrel" type="CharacterBody2D" parent="."]
 position = Vector2(10, -4)
+collision_layer = 2
+
+[node name="TankBarrelTexture" type="AnimatedSprite2D" parent="TankBarrel"]
 sprite_frames = SubResource("SpriteFrames_42al0")
 animation = &"Shoot"
 frame = 1
 frame_progress = 1.0
 offset = Vector2(11, 0)
+
+[node name="BarrelFixedCollition" type="CollisionPolygon2D" parent="TankBarrel"]
+position = Vector2(-9.459999, 4)
+polygon = PackedVector2Array(8.459999, -3, 28.46, -3, 28.46, -5, 18.46, -5, 18.46, -6, 15.459999, -6, 15.459999, -5, 8.459999, -5)
+
+[node name="LightOccluder2D" type="LightOccluder2D" parent="TankBarrel"]
+occluder = SubResource("OccluderPolygon2D_sl7a6")
 
 [node name="TankBody" type="AnimatedSprite2D" parent="."]
 sprite_frames = SubResource("SpriteFrames_lq4iq")
@@ -119,4 +132,4 @@ collision_layer = 2
 collision_mask = 2
 
 [node name="FixedCollisionShape" type="CollisionPolygon2D" parent="CharacterBody2D"]
-polygon = PackedVector2Array(19, -5, 19, -6, 16, -6, 16, -5, 10, -5, 10, -6, 8, -6, 8, -7, 4, -7, 4, -6, 2, -6, 2, -7, 1, -7, 1, -8, -2, -8, -2, -7, -5, -7, -5, -8, -9, -8, -9, -7, -10, -7, -10, -6, -14, -6, -14, -5, -18, -5, -18, -3, -17, -3, -17, -2, -11, -2, -11, -1, -13, -1, -13, 0, -14, 0, -14, -1, -20, -1, -20, -5, -21, -5, -21, 0, -22, 0, -22, 2, -21, 2, -21, 4, -19, 4, -19, 3, -19, 3, -18, 3, -18, 5, -13, 10, 6, 10, 11, 5, 11, 3, 10, 3, 10, 2, 12, 2, 12, 3, 13, 3, 13, 1, 11, 1, 11, 0, 8, 0, 8, -1, 10, -1, 10, -2, 13, -2, 13, -3, 29, -3, 29, -5)
+polygon = PackedVector2Array(10, -5, 10, -6, 8, -6, 8, -7, 4, -7, 4, -6, 2, -6, 2, -7, 1, -7, 1, -8, -2, -8, -2, -7, -5, -7, -5, -8, -9, -8, -9, -7, -10, -7, -10, -6, -14, -6, -14, -5, -18, -5, -18, -3, -17, -3, -17, -2, -11, -2, -11, -1, -13, -1, -13, 0, -14, 0, -14, -1, -20, -1, -20, -5, -21, -5, -21, 0, -22, 0, -22, 2, -21, 2, -21, 4, -19, 4, -19, 3, -19, 3, -18, 3, -18, 5, -13, 10, 6, 10, 11, 5, 11, 3, 10, 3, 10, 2, 12, 2, 12, 3, 13, 3, 13, 1, 11, 1, 11, 0, 8, 0, 8, -1, 10, -1, 10, -2, 13, -2, 13, -3, 10, -3)

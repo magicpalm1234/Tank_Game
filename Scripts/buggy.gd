@@ -3,9 +3,10 @@ extends CharacterBody2D
 class_name Tank
 
 @export var empty_bullet: PackedScene
-#@export var bullet: Bullet
+
 @onready var camera: Camera2D = $"../Camera2D"
-@onready var tank_barrel: AnimatedSprite2D = $TankBarrel
+@onready var tank_barrel: CharacterBody2D = $TankBarrel
+
 var reloaded := true # has reloaded variable
 var max_elevation := -30.0 # max rotation for the barrel
 var min_elevation := 15.0 # min rotation for the barrel
@@ -52,7 +53,7 @@ func reload(time): # reload code
 
 func shoot(): # shoot code
 	if reloaded == true: # only shoot chen you have reloaded
-		tank_barrel.play("Shoot")
+		$TankBarrel/TankBarrelTexture.play("Shoot")
 		camera_shake(10)
 		knockback(4)
 		$CollisionShape2D.disabled = true

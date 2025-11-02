@@ -12,7 +12,7 @@ func _process(delta: float) -> void:
 	$ClickSound.pitch_scale = randf_range(2.0,4.0)
 
 
-func _on_restart_button_pressed() -> void:
+func _on_next_level_button_pressed() -> void:
 	
 	$ClickSound.play()
 	await $ClickSound.finished
@@ -28,14 +28,14 @@ func _on_main_menu_button_pressed() -> void:
 	get_parent().emit_signal("main_menu_pressed")
 
 
-func _on_restart_button_mouse_entered() -> void:
+func _on_next_level_button_mouse_entered() -> void:
 	var tween = create_tween()
-	tween.tween_property($RestartButton, "scale", Vector2(0.75, 0.75), 0.2).set_trans(Tween.TRANS_BACK)
+	tween.tween_property($NextLevelButton, "scale", Vector2(0.75, 0.75), 0.2).set_trans(Tween.TRANS_BACK)
 
 
-func _on_restart_button_mouse_exited() -> void:
+func _on_next_level_button_mouse_exited() -> void:
 	var tween = create_tween()
-	tween.tween_property($RestartButton, "scale", Vector2(0.5, 0.5), 0.2).set_trans(Tween.TRANS_BACK)
+	tween.tween_property($NextLevelButton, "scale", Vector2(0.5, 0.5), 0.2).set_trans(Tween.TRANS_BACK)
 
 
 func _on_main_menu_button_mouse_entered() -> void:

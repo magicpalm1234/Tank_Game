@@ -3,21 +3,14 @@ extends Node2D
 signal restart_pressed
 signal main_menu_pressed
 signal enemy_died
-signal new_enemy
 
 var amount_of_enemies := 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
-	var tween = create_tween()
-	$Enemy.rotation_degrees = 2
-	tween.tween_property($Enemy, "position", Vector2(176,1), 1)
-	await tween.finished
-	$Enemy.rotation_degrees = 0
-	
+	new_tank()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
-	
 	if $Buggy.health <= 0:
 		lose()
 	
@@ -49,5 +42,23 @@ func _on_enemy_died() -> void:
 	amount_of_enemies -= 1
 
 
-func _on_new_enemy() -> void:
+func new_tank() -> void:
+	var randspawn = randi_range(1,4)
+	var new_enemy_tank = preload("res://Scenes/enemy.tscn").instantiate()
+	
+	add_child(new_enemy_tank)
+	new_enemy_tank.add_to_group("enemy")
+	
+	if randspawn == 1:
+		new_enemy_tank.position = $SpawnPositions/SpawnPosition1.position
+	
+	if randspawn == 2:
+		new_enemy_tank.position = $SpawnPositions/SpawnPosition2.position
+	
+	if randspawn == 3:
+		new_enemy_tank.position = $SpawnPositions/SpawnPosition3.position
+	
+	if randspawn == 4:
+		new_enemy_tank.position = $SpawnPositions/SpawnPosition4.position
+	
 	amount_of_enemies += 1
