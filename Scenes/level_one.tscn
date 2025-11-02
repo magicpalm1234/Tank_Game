@@ -1,9 +1,8 @@
-[gd_scene load_steps=8 format=3 uid="uid://cxnheyvwt8tge"]
+[gd_scene load_steps=7 format=3 uid="uid://cxnheyvwt8tge"]
 
 [ext_resource type="PackedScene" uid="uid://ccffayfi2ejuy" path="res://Scenes/backround.tscn" id="1_hi7j2"]
 [ext_resource type="Script" uid="uid://kydrq6rjsvew" path="res://Scripts/level_one.gd" id="1_ik1yt"]
 [ext_resource type="PackedScene" uid="uid://udrltsm15gwx" path="res://Scenes/buggy.tscn" id="2_ik1yt"]
-[ext_resource type="PackedScene" uid="uid://vasn6jbsld0j" path="res://Scenes/enemy.tscn" id="3_b7vm3"]
 [ext_resource type="FontFile" uid="uid://d3voj87xta0rd" path="res://Assets/Font/Minecraft.ttf" id="6_gni6d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gni6d"]
@@ -22,9 +21,6 @@ script = ExtResource("1_ik1yt")
 [node name="Camera2D" type="Camera2D" parent="."]
 position = Vector2(80, 0)
 zoom = Vector2(4, 4)
-
-[node name="Enemy" parent="." instance=ExtResource("3_b7vm3")]
-position = Vector2(246, 1)
 
 [node name="StaticBody2D" type="StaticBody2D" parent="."]
 
@@ -53,12 +49,9 @@ text = "TEXT"
 position = Vector2(180, 10)
 
 [node name="SpawnPosition2" type="Node2D" parent="SpawnPositions"]
-position = Vector2(140, 10)
+position = Vector2(120, 10)
 
 [node name="SpawnPosition3" type="Node2D" parent="SpawnPositions"]
-position = Vector2(100, 10)
-
-[node name="SpawnPosition4" type="Node2D" parent="SpawnPositions"]
 position = Vector2(60, 10)
 
 [connection signal="enemy_died" from="." to="." method="_on_enemy_died"]
