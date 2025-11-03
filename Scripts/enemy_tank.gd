@@ -33,6 +33,7 @@ func shoot():
 			new_bullet.rotation_degrees = 180
 			new_bullet.speed = -1000
 			new_bullet.position = Vector2(-15,-5)
+			$LightOccluder2D.sdf_collision = false
 		
 		
 			reloaded = false

@@ -40,8 +40,8 @@ func _on_quit_button_pressed() -> void:
 	
 	tween.tween_property($Camera2D, "zoom", Vector2(8, 8), 7.5).set_trans(Tween.TRANS_BACK) # it works, somehow
 	get_child(0).emit_signal("stop_backround_animations") # stops the backround from moving
-	$Node2D/Parallax2D.autoscroll = Vector2(0,0)
-	$Node2D/Parallax2D2.autoscroll = Vector2(0,0)
+	$Parallax/Parallax2D.autoscroll = Vector2(0,0)
+	$Parallax/Parallax2D2.autoscroll = Vector2(0,0)
 	await get_tree().create_timer(1.5).timeout # timer of 1.5 after that the game closes
 	get_tree().quit()
 

@@ -4,6 +4,9 @@ signal restart_pressed
 signal main_menu_pressed
 signal enemy_died
 
+var enemy_tank = preload("res://Scenes/enemy.tscn")
+
+
 var open_spawn_point1 = true
 var open_spawn_point2 = true
 var open_spawn_point3 = true
@@ -12,7 +15,6 @@ var amount_of_enemies := 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	new_tank()
-	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -23,9 +25,11 @@ func _process(delta: float) -> void:
 		win()
 	$Label.text = str("Enemies: ",amount_of_enemies)
 	get_children()
-	
+	add()
 
-
+func add():
+	await get_tree().create_timer(3).timeout
+	new_tank()
 
 func win():
 	var new_win_screen = preload("res://Scenes/win_screen.tscn").instantiate()
@@ -45,23 +49,26 @@ func _on_main_menu_pressed() -> void:
 	get_tree().paused = false
 	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 
-func _on_enemy_died() -> void:
+func _on_enemy_died(enemy) -> void:
 	
-	if is_in_group("enemy_spawn1"):
+	if enemy.is_in_group("enemy_spawn1"):
 		open_spawn_point1 = true
+		amount_of_enemies -= 1
 	
-	if is_in_group("enemy_spawn2"):
+	if enemy.is_in_group("enemy_spawn2"):
 		open_spawn_point2 = true
+		amount_of_enemies -= 1
 	
-	if is_in_group("enemy_spawn3"):
+	if enemy.is_in_group("enemy_spawn3"):
 		open_spawn_point3 = true
-	
-	amount_of_enemies -= 1
+		amount_of_enemies -= 1
 
 
 func new_tank() -> void:
+	var new_enemy_tank = enemy_tank.instantiate()
+	
 	var randspawn = randi_range(1,3)
-	var new_enemy_tank = preload("res://Scenes/enemy.tscn").instantiate()
+	
 	var spawn_pos_1 = Vector2(180,1)
 	var spawn_pos_2 = Vector2(120,1)
 	var spawn_pos_3 = Vector2(60,1)

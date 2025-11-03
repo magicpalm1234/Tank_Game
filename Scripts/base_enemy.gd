@@ -19,5 +19,5 @@ func take_damage(amount):
 
 func die():
 	remove_from_group("enemy")
-	get_parent().emit_signal("enemy_died")
+	get_parent().emit_signal("enemy_died", self)
 	queue_free()
