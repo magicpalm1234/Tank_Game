@@ -1,15 +1,77 @@
-[gd_scene load_steps=7 format=3 uid="uid://cxnheyvwt8tge"]
+[gd_scene load_steps=11 format=3 uid="uid://cxnheyvwt8tge"]
 
 [ext_resource type="PackedScene" uid="uid://ccffayfi2ejuy" path="res://Scenes/backround.tscn" id="1_hi7j2"]
 [ext_resource type="Script" uid="uid://kydrq6rjsvew" path="res://Scripts/level_one.gd" id="1_ik1yt"]
 [ext_resource type="PackedScene" uid="uid://udrltsm15gwx" path="res://Scenes/buggy.tscn" id="2_ik1yt"]
+[ext_resource type="PackedScene" uid="uid://cw2gx5y7s73je" path="res://Scenes/sun.tscn" id="5_b7vm3"]
 [ext_resource type="FontFile" uid="uid://d3voj87xta0rd" path="res://Assets/Font/Minecraft.ttf" id="6_gni6d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gni6d"]
 size = Vector2(1054, 76)
 
 [sub_resource type="OccluderPolygon2D" id="OccluderPolygon2D_b7vm3"]
-polygon = PackedVector2Array(-71, 10, 311, 10, 311, 86, -71, 86, -71, 9)
+polygon = PackedVector2Array(-410, 10, 916, 10, 916, 90, -410, 90)
+
+[sub_resource type="Animation" id="Animation_gni6d"]
+resource_name = "SunAnimation"
+length = 100.0
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 25, 47.5, 52.5, 75, 100),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector2(-113, 18), Vector2(-16, -36), Vector2(70, -60), Vector2(90, -60), Vector2(176.5, -36), Vector2(273, 18)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DirectionalLight2D:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 100),
+"transitions": PackedFloat32Array(1, 1),
+"update": 0,
+"values": [-1.569051, 1.569051]
+}
+
+[sub_resource type="Animation" id="Animation_3lrk7"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sun:position")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-113, 18)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("DirectionalLight2D:skew")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [-1.569051]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_y3aq0"]
+_data = {
+&"RESET": SubResource("Animation_3lrk7"),
+&"SunAnimation": SubResource("Animation_gni6d")
+}
 
 [node name="LevelOne" type="Node2D"]
 script = ExtResource("1_ik1yt")
@@ -43,16 +105,20 @@ theme_override_fonts/font = ExtResource("6_gni6d")
 theme_override_font_sizes/font_size = 16
 text = "TEXT"
 
-[node name="SpawnPositions" type="Node2D" parent="."]
+[node name="Sun" parent="." instance=ExtResource("5_b7vm3")]
+z_index = -1
+position = Vector2(-113, 18)
 
-[node name="SpawnPosition1" type="Node2D" parent="SpawnPositions"]
-position = Vector2(180, 10)
+[node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
+position = Vector2(-113, 18)
+skew = -1.569051
+energy = 0.1
+shadow_enabled = true
 
-[node name="SpawnPosition2" type="Node2D" parent="SpawnPositions"]
-position = Vector2(120, 10)
-
-[node name="SpawnPosition3" type="Node2D" parent="SpawnPositions"]
-position = Vector2(60, 10)
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_y3aq0")
+}
 
 [connection signal="enemy_died" from="." to="." method="_on_enemy_died"]
 [connection signal="main_menu_pressed" from="." to="." method="_on_main_menu_pressed"]

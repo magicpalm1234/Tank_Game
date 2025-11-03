@@ -12,8 +12,7 @@ var amount_of_enemies := 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
 	new_tank()
-	new_tank()
-	new_tank()
+	
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
 func _process(delta: float) -> void:
@@ -63,37 +62,62 @@ func _on_enemy_died() -> void:
 func new_tank() -> void:
 	var randspawn = randi_range(1,3)
 	var new_enemy_tank = preload("res://Scenes/enemy.tscn").instantiate()
+	var spawn_pos_1 = Vector2(180,1)
+	var spawn_pos_2 = Vector2(120,1)
+	var spawn_pos_3 = Vector2(60,1)
 	
 	add_child(new_enemy_tank)
 	new_enemy_tank.add_to_group("enemy")
 	
 	if randspawn == 1:
 		if open_spawn_point1 == true:
+			var tween = create_tween()
 			open_spawn_point1 = false
 			new_enemy_tank.add_to_group("enemy_spawn1")
-			new_enemy_tank.position = $SpawnPositions/SpawnPosition1.position
-			new_enemy_tank.position -= Vector2(0,9)
 			amount_of_enemies += 1
+			
+			new_enemy_tank.position.y = 1
+			new_enemy_tank.position.x = 300
+			new_enemy_tank.rotation_degrees = 1
+			tween.tween_property(new_enemy_tank, "position", spawn_pos_1,1.5)
+			await tween.finished
+			new_enemy_tank.rotation_degrees = 0
+			
 		else:
 			new_enemy_tank.queue_free()
 	
 	elif randspawn == 2:
 		if open_spawn_point2 == true:
+			var tween = create_tween()
 			open_spawn_point2 = false
 			new_enemy_tank.add_to_group("enemy_spawn2")
-			new_enemy_tank.position = $SpawnPositions/SpawnPosition2.position
-			new_enemy_tank.position -= Vector2(0,9)
 			amount_of_enemies += 1
+			
+			new_enemy_tank.position.y = 1
+			new_enemy_tank.position.x = 300
+			new_enemy_tank.rotation_degrees = 1
+			tween.tween_property(new_enemy_tank, "position", spawn_pos_2,2.25)
+			await tween.finished
+			new_enemy_tank.rotation_degrees = 0
+			
 		else:
 			new_enemy_tank.queue_free()
 	
 	elif randspawn == 3:
 		if open_spawn_point3 == true:
+			var tween = create_tween()
 			open_spawn_point3 = false
 			new_enemy_tank.add_to_group("enemy_spawn3")
-			new_enemy_tank.position = $SpawnPositions/SpawnPosition3.position
-			new_enemy_tank.position -= Vector2(0,9)
 			amount_of_enemies += 1
+			
+			new_enemy_tank.position.y = 1
+			new_enemy_tank.position.x = 300
+			new_enemy_tank.rotation_degrees = 1
+			tween.tween_property(new_enemy_tank, "position", spawn_pos_3,3)
+			await tween.finished
+			new_enemy_tank.rotation_degrees = 0
+			
+			
 		else:
 			new_enemy_tank.queue_free()
 	

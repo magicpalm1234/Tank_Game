@@ -1,8 +1,7 @@
-[gd_scene load_steps=10 format=3 uid="uid://cnpcn7l25ujmi"]
+[gd_scene load_steps=9 format=3 uid="uid://cnpcn7l25ujmi"]
 
 [ext_resource type="Script" uid="uid://c0h0s3y3x2nud" path="res://Scripts/bullet.gd" id="1_oduel"]
 [ext_resource type="Texture2D" uid="uid://budvkn4b48psv" path="res://Assets/Bullet.png" id="1_xjght"]
-[ext_resource type="PackedScene" uid="uid://ctuua0yuhxs28" path="res://Scenes/explosion.tscn" id="2_ycag2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ycag2"]
 size = Vector2(5, 2)
@@ -34,7 +33,6 @@ radius = 18.0
 [node name="Bullet" type="CharacterBody2D"]
 disable_mode = 1
 script = ExtResource("1_oduel")
-explosion = ExtResource("2_ycag2")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 position = Vector2(2.5, 0)

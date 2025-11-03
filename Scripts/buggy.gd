@@ -27,6 +27,8 @@ func _physics_process(delta: float) -> void:
 	if tank_barrel.rotation_degrees >= min_elevation:
 		tank_barrel.rotation_degrees = min_elevation
 	
+	$"../AnimationPlayer".play("SunAnimation")
+	
 
 func die(): # die code
 	var new_explosions = preload("res://Scenes/explosions.tscn").instantiate()
@@ -61,7 +63,7 @@ func shoot(): # shoot code
 		var new_bullet = preload("res://Scenes/bullet.tscn").instantiate() # spawning the bullet
 		add_sibling(new_bullet)
 		new_bullet.position = tank_barrel.position
-		new_bullet.z_index = 1
+		new_bullet.z_index += 1
 		
 		
 		new_bullet.show()

@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=4 uid="uid://ccffayfi2ejuy"]
+[gd_scene load_steps=13 format=4 uid="uid://ccffayfi2ejuy"]
 
 [ext_resource type="Texture2D" uid="uid://q15kiimltahp" path="res://Assets/TankBackround.png" id="1_ra1ay"]
 [ext_resource type="Script" uid="uid://cf1cdnwfixg8v" path="res://Scripts/backround.gd" id="1_wrge3"]
@@ -8,6 +8,10 @@
 [ext_resource type="PackedScene" uid="uid://cbrit85gp8dmq" path="res://Scenes/ricochet_particles.tscn" id="5_wrge3"]
 [ext_resource type="PackedScene" uid="uid://bisfhyp5uwhr5" path="res://Scenes/explosions.tscn" id="6_4p88d"]
 [ext_resource type="PackedScene" uid="uid://ctuua0yuhxs28" path="res://Scenes/explosion.tscn" id="7_satvs"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_wrge3"]
+_data = PackedByteArray("AAADAAUAAAABAAAAKgEAAKwAAAAmAAAAUklGRh4AAABXRUJQVlA4TBEAAAAvKcEqAAdQ/D5WvP+BiOh/AAA=")
+size_override = Vector2(298, 172)
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_ld4h0"]
 texture = ExtResource("4_71box")
@@ -164,7 +168,34 @@ autoscroll = Vector2(-2.5, 0)
 repeat_times = 3
 ignore_camera_scroll = true
 
-[node name="Sprite2D" type="Sprite2D" parent="Parallax2D3"]
+[node name="BlueSky" type="Sprite2D" parent="Parallax2D3"]
+z_index = -2
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_wrge3")
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://Assets/TankBackroundLayer4.aseprite",
+"source_uid": 2786036587199488497
+}
+metadata/_aseprite_wizard_source_file_hash_ = "9748a5d6c1e962126eccc35564e50217"
+
+[node name="Clouds" type="Sprite2D" parent="Parallax2D3"]
 texture = ExtResource("3_hjtya")
 
 [node name="Parallax2D2" type="Parallax2D" parent="."]

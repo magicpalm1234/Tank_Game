@@ -34,6 +34,7 @@ func shoot():
 			new_bullet.speed = -1000
 			new_bullet.position = Vector2(-15,-5)
 		
+		
 			reloaded = false
 			reload(randi_range(2,4))
 

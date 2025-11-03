@@ -1,0 +1,33 @@
+[gd_scene load_steps=2 format=4 uid="uid://cw2gx5y7s73je"]
+
+[sub_resource type="PortableCompressedTexture2D" id="PortableCompressedTexture2D_xde2v"]
+_data = PackedByteArray("AAADAAUAAAABAAAAEAAAABAAAABGAAAAUklGRj4AAABXRUJQVlA4TDIAAAAvD8ADEA8w/7M/hvMf8FAUSWrEIQAJSEHaWkMST3K/4iGi/5la1r7j4uJ9Fxc72stSAQ==")
+size_override = Vector2(16, 16)
+
+[node name="Sun" type="Node2D"]
+
+[node name="Sprite2D" type="Sprite2D" parent="."]
+texture_filter = 1
+texture = SubResource("PortableCompressedTexture2D_xde2v")
+metadata/_aseprite_wizard_interface_config_ = {
+"pending_changes": {}
+}
+metadata/_aseprite_wizard_config_ = {
+"convert_fps_field": 60.0,
+"convert_ms_field": 16.0,
+"convert_to_fps": false,
+"embed_tex": true,
+"i_mode": 1,
+"keep_anim_length": false,
+"layers": [],
+"o_ex_p": "",
+"o_folder": "",
+"o_name": "",
+"only_visible": false,
+"player": "",
+"scale": "1.0",
+"slice": "",
+"source": "res://Assets/Sun.aseprite",
+"source_uid": 2670666910115504641
+}
+metadata/_aseprite_wizard_source_file_hash_ = "0183c5fe3d6a37b42eb77399c24613fc"

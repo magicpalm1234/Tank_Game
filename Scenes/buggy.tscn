@@ -96,7 +96,7 @@ empty_bullet = ExtResource("3_sl7a6")
 
 [node name="TankBarrel" type="CharacterBody2D" parent="."]
 position = Vector2(10, -4)
-collision_layer = 2
+collision_layer = 4
 
 [node name="TankBarrelTexture" type="AnimatedSprite2D" parent="TankBarrel"]
 sprite_frames = SubResource("SpriteFrames_42al0")
