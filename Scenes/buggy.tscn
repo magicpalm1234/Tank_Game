@@ -44,19 +44,19 @@ polygon = PackedVector2Array(-1, -1, -1, 1, 19, 1, 19, -1, 9, -1, 9, -2, 6, -2, 
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_7xk6u"]
 atlas = ExtResource("1_efscn")
-region = Rect2(55, 19, 55, 19)
+region = Rect2(0, 0, 55, 19)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_sl7a6"]
 atlas = ExtResource("1_efscn")
-region = Rect2(0, 0, 55, 19)
+region = Rect2(55, 19, 55, 19)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_42al0"]
 atlas = ExtResource("1_efscn")
-region = Rect2(110, 0, 55, 19)
+region = Rect2(55, 0, 55, 19)
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8q0rl"]
 atlas = ExtResource("1_efscn")
-region = Rect2(55, 0, 55, 19)
+region = Rect2(110, 0, 55, 19)
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_lq4iq"]
 animations = [{
@@ -116,7 +116,7 @@ occluder = SubResource("OccluderPolygon2D_sl7a6")
 sprite_frames = SubResource("SpriteFrames_lq4iq")
 animation = &"Driving"
 autoplay = "Driving"
-frame_progress = 0.9595797
+frame_progress = 0.5949539
 centered = false
 offset = Vector2(-22, -9)
 

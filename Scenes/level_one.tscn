@@ -112,8 +112,10 @@ position = Vector2(-113, 18)
 [node name="DirectionalLight2D" type="DirectionalLight2D" parent="."]
 position = Vector2(-113, 18)
 skew = -1.569051
+editor_only = true
 energy = 0.1
 shadow_enabled = true
+shadow_filter_smooth = 0.6
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {

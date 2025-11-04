@@ -3,7 +3,7 @@ extends CharacterBody2D
 class_name Bullet
 
 @export var speed := 100.0
-@export var damage := randi_range(30, 80)
+@export var damage := randi_range(30, 50)
 
 
 # Called when the node enters the scene tree for the first time.

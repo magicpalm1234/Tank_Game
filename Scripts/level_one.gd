@@ -25,11 +25,7 @@ func _process(delta: float) -> void:
 		win()
 	$Label.text = str("Enemies: ",amount_of_enemies)
 	get_children()
-	add()
-
-func add():
-	await get_tree().create_timer(3).timeout
-	new_tank()
+	
 
 func win():
 	var new_win_screen = preload("res://Scenes/win_screen.tscn").instantiate()
@@ -50,6 +46,9 @@ func _on_main_menu_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/main_menu.tscn")
 
 func _on_enemy_died(enemy) -> void:
+	var chance_of_new_enemy = randf()
+	if chance_of_new_enemy <= 0.5:
+		new_tank()
 	
 	if enemy.is_in_group("enemy_spawn1"):
 		open_spawn_point1 = true
