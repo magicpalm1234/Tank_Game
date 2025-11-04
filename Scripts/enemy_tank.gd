@@ -49,6 +49,9 @@ func die():
 	new_ricochet_paritcles.emitting = true
 	
 	
+	$Sounds/Explosion.play()
+	
+	
 	var new_explotions = preload("res://Scenes/explosions.tscn").instantiate()
 	add_sibling(new_explotions)
 	

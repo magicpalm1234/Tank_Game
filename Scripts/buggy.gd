@@ -33,6 +33,9 @@ func _physics_process(delta: float) -> void:
 func die(): # die code
 	var new_explosions = preload("res://Scenes/explosions.tscn").instantiate()
 	add_child(new_explosions)
+	
+	$Sound/Explosion.play()
+	
 	new_explosions.emitting = true
 	await new_explosions.finished
 	queue_free()

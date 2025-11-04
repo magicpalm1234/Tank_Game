@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://rd534d7fnyf6" path="res://Scripts/main_menu.gd" id="1_1ehe0"]
 [ext_resource type="PackedScene" uid="uid://ccffayfi2ejuy" path="res://Scenes/backround.tscn" id="2_48xlc"]
 [ext_resource type="FontFile" uid="uid://d3voj87xta0rd" path="res://Assets/Font/Minecraft.ttf" id="3_ce3w2"]
-[ext_resource type="AudioStream" uid="uid://bf58nr7tepnd8" path="res://Assets/Sound/click.wav" id="4_ce3w2"]
+[ext_resource type="AudioStream" uid="uid://caxmno38e8w6i" path="res://Assets/Sound/click.wav" id="4_ce3w2"]
 [ext_resource type="PackedScene" uid="uid://bwrjya1lyu51r" path="res://Scenes/level_selection_screen.tscn" id="5_n45e2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ce3w2"]
@@ -21,7 +21,6 @@ size_override = Vector2(298, 172)
 script = ExtResource("1_1ehe0")
 
 [node name="Backround" parent="." instance=ExtResource("2_48xlc")]
-modulate = Color(1, 0.5882353, 0.39215687, 1)
 
 [node name="Camera2D" type="Camera2D" parent="."]
 zoom = Vector2(4, 4)
@@ -97,7 +96,6 @@ autoscroll = Vector2(-2.5, 0)
 repeat_times = 7
 
 [node name="Sky" type="Sprite2D" parent="Parallax/Parallax2D"]
-modulate = Color(1, 0.5882353, 0.39215687, 1)
 texture_filter = 1
 texture_repeat = 2
 texture = SubResource("PortableCompressedTexture2D_opfnp")
@@ -136,10 +134,9 @@ autoscroll = Vector2(-2.5, 0)
 repeat_times = 7
 
 [node name="Sky" type="Sprite2D" parent="Parallax/Parallax2D2"]
-modulate = Color(1, 0.5882353, 0.39215687, 1)
 texture_filter = 1
 texture_repeat = 2
-position = Vector2(2, -144.5)
+position = Vector2(0, -118)
 scale = Vector2(1, 1.0174419)
 texture = SubResource("PortableCompressedTexture2D_n45e2")
 metadata/_aseprite_wizard_interface_config_ = {

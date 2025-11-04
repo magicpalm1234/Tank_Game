@@ -1,9 +1,10 @@
-[gd_scene load_steps=17 format=3 uid="uid://udrltsm15gwx"]
+[gd_scene load_steps=18 format=3 uid="uid://udrltsm15gwx"]
 
 [ext_resource type="Texture2D" uid="uid://dc67khtv8q6ta" path="res://Assets/TankBarrel.png" id="1_07ppb"]
 [ext_resource type="Script" uid="uid://t3254pk6gggf" path="res://Scripts/buggy.gd" id="1_7xk6u"]
 [ext_resource type="Texture2D" uid="uid://42llyxtxskbl" path="res://Assets/Tank.png" id="1_efscn"]
 [ext_resource type="PackedScene" uid="uid://cw7ru2sbrig1x" path="res://Scenes/empty_bullet.tscn" id="3_sl7a6"]
+[ext_resource type="AudioStream" uid="uid://3uud74n3x2g2" path="res://Assets/Sound/explosion.wav" id="5_sl7a6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_5x8jh"]
 atlas = ExtResource("1_07ppb")
@@ -106,10 +107,12 @@ frame_progress = 1.0
 offset = Vector2(11, 0)
 
 [node name="BarrelFixedCollition" type="CollisionPolygon2D" parent="TankBarrel"]
+visible = false
 position = Vector2(-9.459999, 4)
 polygon = PackedVector2Array(8.459999, -3, 28.46, -3, 28.46, -5, 18.46, -5, 18.46, -6, 15.459999, -6, 15.459999, -5, 8.459999, -5)
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="TankBarrel"]
+visible = false
 occluder = SubResource("OccluderPolygon2D_sl7a6")
 
 [node name="TankBody" type="AnimatedSprite2D" parent="."]
@@ -133,3 +136,9 @@ collision_mask = 2
 
 [node name="FixedCollisionShape" type="CollisionPolygon2D" parent="CharacterBody2D"]
 polygon = PackedVector2Array(10, -5, 10, -6, 8, -6, 8, -7, 4, -7, 4, -6, 2, -6, 2, -7, 1, -7, 1, -8, -2, -8, -2, -7, -5, -7, -5, -8, -9, -8, -9, -7, -10, -7, -10, -6, -14, -6, -14, -5, -18, -5, -18, -3, -17, -3, -17, -2, -11, -2, -11, -1, -13, -1, -13, 0, -14, 0, -14, -1, -20, -1, -20, -5, -21, -5, -21, 0, -22, 0, -22, 2, -21, 2, -21, 4, -19, 4, -19, 3, -19, 3, -18, 3, -18, 5, -13, 10, 6, 10, 11, 5, 11, 3, 10, 3, 10, 2, 12, 2, 12, 3, 13, 3, 13, 1, 11, 1, 11, 0, 8, 0, 8, -1, 10, -1, 10, -2, 13, -2, 13, -3, 10, -3)
+
+[node name="Sound" type="Node2D" parent="."]
+
+[node name="Explosion" type="AudioStreamPlayer" parent="Sound"]
+process_mode = 3
+stream = ExtResource("5_sl7a6")

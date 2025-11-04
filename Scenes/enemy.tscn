@@ -1,10 +1,11 @@
-[gd_scene load_steps=15 format=3 uid="uid://vasn6jbsld0j"]
+[gd_scene load_steps=16 format=3 uid="uid://vasn6jbsld0j"]
 
 [ext_resource type="Script" uid="uid://bnsiyhb4b6rni" path="res://Scripts/enemy_tank.gd" id="1_hghv2"]
 [ext_resource type="Texture2D" uid="uid://g2ytnft66wce" path="res://Assets/YellowTank.png" id="2_1f0kj"]
 [ext_resource type="PackedScene" uid="uid://bisfhyp5uwhr5" path="res://Scenes/explosions.tscn" id="2_afpow"]
 [ext_resource type="PackedScene" uid="uid://cnpcn7l25ujmi" path="res://Scenes/bullet.tscn" id="3_287tu"]
 [ext_resource type="Texture2D" uid="uid://bwrewd554ewb0" path="res://Assets/YellowTankBarrel.png" id="4_0830c"]
+[ext_resource type="AudioStream" uid="uid://3uud74n3x2g2" path="res://Assets/Sound/explosion.wav" id="6_ghaa6"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_8uf12"]
 atlas = ExtResource("4_0830c")
@@ -103,3 +104,8 @@ collision_mask = 2
 
 [node name="LightOccluder2D" type="LightOccluder2D" parent="."]
 occluder = SubResource("OccluderPolygon2D_8uf12")
+
+[node name="Sounds" type="Node2D" parent="."]
+
+[node name="Explosion" type="AudioStreamPlayer" parent="Sounds"]
+stream = ExtResource("6_ghaa6")

@@ -1,7 +1,8 @@
-[gd_scene load_steps=9 format=3 uid="uid://cnpcn7l25ujmi"]
+[gd_scene load_steps=10 format=3 uid="uid://cnpcn7l25ujmi"]
 
 [ext_resource type="Script" uid="uid://c0h0s3y3x2nud" path="res://Scripts/bullet.gd" id="1_oduel"]
 [ext_resource type="Texture2D" uid="uid://budvkn4b48psv" path="res://Assets/Bullet.png" id="1_xjght"]
+[ext_resource type="AudioStream" uid="uid://cvfspwch7le30" path="res://Assets/Sound/shootexplosion.wav" id="3_ycag2"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ycag2"]
 size = Vector2(5, 2)
@@ -65,6 +66,11 @@ rect = Rect2(0, -1, 5, 2)
 [node name="CollisionShape2D" type="CollisionShape2D" parent="ExplosionArea"]
 position = Vector2(3, 0)
 shape = SubResource("CircleShape2D_ycag2")
+
+[node name="Sound" type="Node2D" parent="."]
+
+[node name="Shootexplosion" type="AudioStreamPlayer" parent="Sound"]
+stream = ExtResource("3_ycag2")
 
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
 [connection signal="screen_exited" from="VisibleOnScreenNotifier2D" to="." method="_on_visible_on_screen_notifier_2d_screen_exited"]

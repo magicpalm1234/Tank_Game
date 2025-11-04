@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://dk81m0uwqbeqv" path="res://Scripts/win_screen.gd" id="1_a00f1"]
 [ext_resource type="FontFile" uid="uid://d3voj87xta0rd" path="res://Assets/Font/Minecraft.ttf" id="1_l5sol"]
-[ext_resource type="AudioStream" uid="uid://bf58nr7tepnd8" path="res://Assets/Sound/click.wav" id="3_awi1s"]
+[ext_resource type="AudioStream" uid="uid://caxmno38e8w6i" path="res://Assets/Sound/click.wav" id="3_awi1s"]
 
 [node name="WinScreen" type="Control"]
 process_mode = 3
