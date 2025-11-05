@@ -42,7 +42,7 @@ shape = SubResource("RectangleShape2D_ycag2")
 [node name="SmokeTrail" type="GPUParticles2D" parent="."]
 position = Vector2(2, 0)
 amount = 16
-lifetime = 0.2
+lifetime = 0.5
 process_material = SubResource("ParticleProcessMaterial_oduel")
 
 [node name="BulletTexture" type="Sprite2D" parent="."]

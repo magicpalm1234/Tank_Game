@@ -33,14 +33,11 @@ func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
 			$Sound/Shootexplosion.play()
 			explode()
 		if miss_chance > 0.9:
+			$Sound/Shootexplosion.pitch_scale = randf_range(1, 1.5)
+			$Sound/Shootexplosion.play()
 			ricochet(-100, -145)
 
 func ricochet(min_ricochet_angle, max_ricochet_angle):
-	var new_ricochet_paritcles = preload("res://Scenes/ricochet_particles.tscn").instantiate()
-	add_sibling(new_ricochet_paritcles)
-	new_ricochet_paritcles.position = position
-	new_ricochet_paritcles.emitting = true
-	
 	rotation_degrees = randf_range(min_ricochet_angle, max_ricochet_angle)
 	speed /= 3
 

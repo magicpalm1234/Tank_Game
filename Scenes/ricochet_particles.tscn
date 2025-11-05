@@ -34,7 +34,6 @@ lifetime = 3.0
 one_shot = true
 explosiveness = 1.0
 visibility_rect = Rect2(-500, -500, 1000, 1000)
-trail_enabled = true
 trail_lifetime = 0.02
 trail_sections = 10
 process_material = SubResource("ParticleProcessMaterial_si3tk")
