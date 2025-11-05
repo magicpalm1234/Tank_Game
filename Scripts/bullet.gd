@@ -20,6 +20,7 @@ func _process(delta: float) -> void:
 	
 	velocity = direction * speed
 	
+	
 	move_and_slide()
 
 
@@ -28,7 +29,7 @@ func _on_area_2d_body_entered(body: CharacterBody2D) -> void:
 	if body.has_method("take_damage"):
 		if miss_chance <= 0.9:
 			body.take_damage(damage)
-			$Sound/Shootexplosion.pitch_scale = randf_range(1.0, 1.5)
+			$Sound/Shootexplosion.pitch_scale = randf_range(0.8, 1.2)
 			$Sound/Shootexplosion.play()
 			explode()
 		if miss_chance > 0.9:

@@ -14,6 +14,7 @@ var open_spawn_point3 = true
 var amount_of_enemies := 0
 # Called when the node enters the scene tree for the first time.
 func _ready() -> void:
+	$Music/Music.play()
 	new_tank()
 
 # Called every frame. 'delta' is the elapsed time since the previous frame.
@@ -25,7 +26,6 @@ func _process(delta: float) -> void:
 		win()
 	$Label.text = str("Enemies: ",amount_of_enemies)
 	get_children()
-	
 
 func win():
 	var new_win_screen = preload("res://Scenes/win_screen.tscn").instantiate()
@@ -128,6 +128,8 @@ func new_tank() -> void:
 			new_enemy_tank.queue_free()
 	
 
+func _on_music_finished() -> void:
+	$Music/Music.play()
 
 
 

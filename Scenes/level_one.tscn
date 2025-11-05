@@ -1,9 +1,10 @@
-[gd_scene load_steps=11 format=3 uid="uid://cxnheyvwt8tge"]
+[gd_scene load_steps=12 format=3 uid="uid://cxnheyvwt8tge"]
 
 [ext_resource type="PackedScene" uid="uid://ccffayfi2ejuy" path="res://Scenes/backround.tscn" id="1_hi7j2"]
 [ext_resource type="Script" uid="uid://kydrq6rjsvew" path="res://Scripts/level_one.gd" id="1_ik1yt"]
 [ext_resource type="PackedScene" uid="uid://udrltsm15gwx" path="res://Scenes/buggy.tscn" id="2_ik1yt"]
 [ext_resource type="PackedScene" uid="uid://cw2gx5y7s73je" path="res://Scenes/sun.tscn" id="5_b7vm3"]
+[ext_resource type="AudioStream" uid="uid://cptfoq5onr14p" path="res://Assets/Sound/Music/Music.wav" id="6_3lrk7"]
 [ext_resource type="FontFile" uid="uid://d3voj87xta0rd" path="res://Assets/Font/Minecraft.ttf" id="6_gni6d"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_gni6d"]
@@ -122,6 +123,13 @@ libraries = {
 &"": SubResource("AnimationLibrary_y3aq0")
 }
 
+[node name="Music" type="Node2D" parent="."]
+
+[node name="Music" type="AudioStreamPlayer2D" parent="Music"]
+process_mode = 3
+stream = ExtResource("6_3lrk7")
+
 [connection signal="enemy_died" from="." to="." method="_on_enemy_died"]
 [connection signal="main_menu_pressed" from="." to="." method="_on_main_menu_pressed"]
 [connection signal="restart_pressed" from="." to="." method="_on_restart_pressed"]
+[connection signal="finished" from="Music/Music" to="." method="_on_music_finished"]
